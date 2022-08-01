@@ -75,6 +75,13 @@ class Import extends CI_Model
     where rombel not in (SELECT DISTINCT nama_rombel FROM dim_rombel)');
   }
 
+  function insetToDimTahun()
+  {
+    $this->db->query('insert into dim_tahun(tahun) 
+    SELECT DISTINCT `data_tahun` FROM `xl_sekolah` 
+    where data_tahun not in (SELECT DISTINCT tahun FROM dim_tahun)');
+  }
+
   function repairNullJenisTinggal()
   {
     $this->db->query("UPDATE `xl_sekolah` SET `jenis_tinggal` = 'LAINNYA' where `jenis_tinggal` is null");
@@ -117,23 +124,25 @@ tempat_lahir, tanggal_lahir,
 (select k.id_kip from dim_penerimakip k WHERE k.penerimakip = x.penerima_kip) as penerima_kip,
 (select r.id_rombel from dim_rombel r WHERE r.nama_rombel = x.rombel) as rombel,
 (select ss.id_asalsekolah from dim_asalsekolah ss WHERE ss.nama_sekolah = x.asal_sekolah) as asal_sekolah,
-data_tahun
+(select t.id_tahun from dim_tahun t WHERE t.tahun = x.data_tahun) as data_tahun
 FROM xl_sekolah x
 GROUP by x.nisn
       ";
     $this->db->query($query);
-    // // $data = $this->db->query(
-    // //   "INSERT INTO fact_sekolah (nisn, nama_lengkap, jenis_kelamin, tempat_lahir, tanggal_lahir, agama, penerima_kip, asal_sekolah) 
-    // //   (select nisn from xl_sekolah),
-    // //   (select nama_lengkap from xl_sekolah),
-    // //   (select l.id_jeniskelamin FROM dim_jeniskelamin l WHERE l.jenis_kelamin = x.jenis_kelamin) jenis_kelamin,
-    // //   -- (select p.id_pelanggan from dim_pelanggan p where p.nama_pelanggan =  a.nama_pelanggan) id_pelanggan,
-    // //   -- (select m.id_mainan from dim_mainan m where m.nama_mainan = a.nama_mainan) id_mainan,
-    // //   -- a.durasi_sewa jlh_durasi_sewa, a.harga jlh_harga, count(a.nama_pelanggan) jlh_pelanggan, count(a.nama_mainan) jlh_mainan, count(dp.id_lokasi) jlh_alamat
-    // //   -- from xl_sekolah x, dim_pelanggan dp
-    // //   -- WHERE a.nama_pelanggan = dp.nama_pelanggan
-    // //   -- GROUP by a.nama_mainan, a.nama_pelanggan
-    // //     ";
-    // );
+  }
+
+  public function deleteAll()
+  {
+    $this->db->empty_table('dim_agama');
+    $this->db->empty_table('dim_asalsekolah');
+    $this->db->empty_table('dim_jeniskelamin');
+    $this->db->empty_table('dim_penerimakip');
+    $this->db->empty_table('dim_rombel');
+    $this->db->empty_table('dim_jenistinggal');
+    $this->db->empty_table('dim_tahun');
+    $this->db->empty_table('dim_transportasi');
+    $this->db->empty_table('fact_sekolah');
+    $this->db->empty_table('xls_sekolah');
+    $this->db->empty_table('xl_sekolah');
   }
 }

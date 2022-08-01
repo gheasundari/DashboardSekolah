@@ -76,9 +76,12 @@
 							</div>
 							<div class="row">
 								<div class="col">
-									<button type="submit" class="btn btn-success mr-2">Submit</button>
+									<button type="submit" class="btn btn-success">Submit</button>
 									<button type="reset" class="btn btn-dark">Cancel</button>
-									<button type="reset" class="btn btn-dark">Hapus Data</button>
+									<!-- <button type="reset" class="btn btn-dark">Hapus Data</button> -->
+									<a href="<?= base_url('C_Etl/deleteAll'); ?>">
+										<button type="button" class="btn btn-danger">Hapus Data</button>
+									</a>
 								</div>
 							</div>
 						</form>

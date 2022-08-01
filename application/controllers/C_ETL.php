@@ -132,6 +132,7 @@ class C_ETL extends CI_Controller
         $this->Import->insetToDimJenisTinggal();
         $this->Import->insetToDimJenisTransportasi();
         $this->Import->insetToDimRombel();
+        $this->Import->insetToDimTahun();
     }
 
     function insertToFact()
@@ -142,5 +143,9 @@ class C_ETL extends CI_Controller
 
     function deleteAll()
     {
+        $this->load->model('Import');
+        $this->Import->deleteAll();
+        $this->session->set_flashdata('success', 'Data berhasil dihapus semua.');
+        redirect('c_etl', 'refresh');
     }
 }
