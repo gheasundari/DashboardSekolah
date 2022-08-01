@@ -1,0 +1,40 @@
+INSERT INTO xl_sekolah(nisn, nama_lengkap, jenis_kelamin, tempat_lahir,tanggal_lahir,agama,penerima_kip,asal_sekolah,data_tahun)
+SELECT nisn, nama_lengkap, IF(jenis_kelamin = 'L' , 'Laki-laki', 'Perempuan') as jenis_kelamin, upper(tempat_lahir) as tempat_lahir, tanggal_lahir, agama, penerima_kip,upper(asal_sekolah) as asal_sekolah, data_tahun FROM `xls_sekolah` WHERE data_tahun='2019'
+
+SELECT id_xls_sekolah, nisn, nama_lengkap, IF(jenis_kelamin = 'L' , 'Laki-laki', 'Perempuan') as jenis_kelamin, upper(tempat_lahir) as tempat_lahir, tanggal_lahir, agama, penerima_kip,upper(asal_sekolah) as asal_sekolah FROM `xls_sekolah`
+
+//GANTI MTS NEGERI -> MTSN
+SELECT id_xls_sekolah, nisn, nama_lengkap, IF(jenis_kelamin = 'L' , 'Laki-laki', 'Perempuan') as jenis_kelamin, upper(tempat_lahir) as tempat_lahir, tanggal_lahir, agama, penerima_kip,(REPLACE(upper(asal_sekolah),"MTS NEGERI", "MTSN")) as asal_sekolah FROM `xls_sekolah`
+
+(REPLACE(upper(asal_sekolah),"MTS NEGERI", "MTSN")) as asal_sekolah
+
+UPDATE `xl_sekolah` SET `asal_sekolah` = REPLACE(asal_sekolah, "SMPN", "SMP NEGERI");
+
+UPDATE `xl_sekolah` SET `asal_sekolah` = REPLACE(asal_sekolah, "SMP NEGERI", "SMP") WHERE asal_sekolah LIKE 'SMP NEGERI%'
+
+
+$dataToReplace = ['SMP NEGERI' => 'SMPN', 'MTS NEGERI' => 'MTSN', 'SMP N' => 'SMPN'];
+$sqlReplace = 'asal_sekolah';
+foreach ($dataToReplace as $key => $val) {
+    $sqlReplace = 'REPLACE(' . ($sqlReplace ? $sqlReplace : 'replace_field') . ', "' . $key . '", "' . $val . '")';
+}
+echo $sqlReplace;
+die();
+
+INSERT INTO fact_sekolah (nisn, nama_lengkap, jenis_kelamin, tempat_lahir, tanggal_lahir, agama, penerima_kip, asal_sekolah) select nisn from xl_sekolah
+
+
+INSERT INTO fact_sekolah (nisn, nama_lengkap,jenis_kelamin,tempat_lahir,tanggal_lahir,agama,penerima_kps,asal_sekolah,data_tahun )
+SELECT  nisn,nama_lengkap, (SELECT jenis_kelamin FROM xl_sekolah.x WHERE 
+FROM    dim_transportasi  
+
+SELECT nisn, nama_lengkap, 
+(select s.id_jeniskelamin from dim_jeniskelamin s WHERE s.jenis_kelamin = x.jenis_kelamin) as jenis_kelamin,
+tempat_lahir, tanggal_lahir,
+(select a.id_agama from dim_agama a WHERE a.agama = x.agama) as agama,
+(select j.id_jenis_tinggal from dim_jenistinggal j WHERE j.jenis_tinggal = x.jenis_tinggal) as jenis_tinggal,
+(select t.id_transportasi from dim_transportasi t WHERE t.jenis_transportasi = x.transportasi) as transportasi,
+(select k.id_kip from dim_penerimakip k WHERE k.penerimakip = x.penerima_kip) as penerima_kip,
+(select r.id_rombel from dim_rombel r WHERE r.nama_rombel = x.rombel) as rombel
+FROM xl_sekolah x
+GROUP by x.nisn
