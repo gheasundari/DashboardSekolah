@@ -41,7 +41,7 @@ Timeline page
   left: 50%;
   width: 3px;
   margin-left: -1.5px;
-  background-color: #272c36; }
+  background-color: #e9ecef; }
 
 .timeline > li {
   position: relative;
@@ -68,7 +68,7 @@ Timeline page
   position: relative;
   width: 46%;
   padding: 20px;
-  border: 1px solid #4F5467;
+  border: 1px solid #e9ecef;
   border-radius: 0.25rem;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05); }
@@ -80,9 +80,9 @@ Timeline page
   top: 26px;
   right: -8px;
   border-top: 8px solid transparent;
-  border-right: 0 solid #4F5467;
+  border-right: 0 solid #e9ecef;
   border-bottom: 8px solid transparent;
-  border-left: 8px solid #4F5467; }
+  border-left: 8px solid #e9ecef; }
 
 .timeline > li > .timeline-panel:after {
   content: " ";
@@ -135,10 +135,10 @@ Timeline page
   background-color: #fec107; }
 
 .timeline-badge.danger {
-  background-color: #e46a76; }
+  background-color: #ed4040; }
 
 .timeline-badge.info {
-  background-color: #03a9f3; }
+  background-color: #5475ed; }
 
 .timeline-title {
   margin-top: 0;

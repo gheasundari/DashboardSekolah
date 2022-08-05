@@ -45,46 +45,45 @@
 			<div class="card">
 				<div class="card-body">
 					<form action="<?= base_url('C_ETL/prosesUpload') ?>" method="post" enctype="multipart/form-data">
-						<form method="POST" action="">
-							<div class="row">
-								<div class="col-md-2">
+						<div class="row">
+							<div class="col-md-2">
+								<div class="form-group">
+									<label>Data Tahun</label>
 									<div class="form-group">
-										<label>Data Tahun</label>
-										<div class="form-group">
-											<select name="tahun_data" class="custom-select col-12" id="inlineFormCustomSelect" required>
-												<?php
-												for ($i = date('Y'); $i >= date('Y') - 5; $i--) {
-													echo "<option value='$i'";
-													if (date('Y') == $i) {
-														echo "selected";
-													}
-													echo ">$i</option>";
+										<select name="tahun_data" class="custom-select col-12" id="inlineFormCustomSelect" required>
+											<?php
+											for ($i = date('Y'); $i >= date('Y') - 5; $i--) {
+												echo "<option value='$i'";
+												if (date('Y') == $i) {
+													echo "selected";
 												}
-												?>
-											</select>
-										</div>
+												echo ">$i</option>";
+											}
+											?>
+										</select>
 									</div>
 								</div>
-								<div class="col-md-10">
+							</div>
+							<div class="col-md-10">
+								<div class="form-group">
+									<label>Upload File Excel</label>
 									<div class="form-group">
-										<label>Upload File Excel</label>
-										<div class="form-group">
-											<input type="file" class="form-control" id="exampleInputFile" name="fxls" accept=".xls" required />
-										</div>
+										<input type="file" class="form-control" id="exampleInputFile" name="fxls" accept=".xls" required />
 									</div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col">
-									<button type="submit" class="btn btn-success">Submit</button>
-									<button type="reset" class="btn btn-dark">Cancel</button>
-									<!-- <button type="reset" class="btn btn-dark">Hapus Data</button> -->
-									<a href="<?= base_url('C_Etl/deleteAll'); ?>">
-										<button type="button" class="btn btn-danger">Hapus Data</button>
-									</a>
-								</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<button type="submit" class="btn btn-success">Submit</button>
+								<button type="reset" class="btn btn-dark">Cancel</button>
+								<!-- <button type="reset" class="btn btn-dark">Hapus Data</button> -->
+								<a href="<?= base_url('C_Etl/deleteAll'); ?>">
+									<button type="button" class="btn btn-danger">Hapus Data</button>
+								</a>
 							</div>
-						</form>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -95,7 +94,7 @@
 	<!-- ============================================================== -->
 	<!-- Right sidebar -->
 	<!-- ============================================================== -->
-	<!-- .right-sidebar
+	<!-- .right-sidebar -->
 	<div class="right-sidebar">
 		<div class="slimscrollright">
 			<div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
@@ -145,7 +144,7 @@
 				</ul>
 			</div>
 		</div>
-	</div> -->
+	</div>
 	<!-- ============================================================== -->
 	<!-- End Right sidebar -->
 	<!-- ============================================================== -->

@@ -32,7 +32,7 @@ Contact app Page
 
 .left-aside {
   position: absolute;
-  border-right: 1px solid #4F5467;
+  border-right: 1px solid #e9ecef;
   padding: 20px;
   width: 250px;
   height: 100%; }
@@ -58,11 +58,11 @@ Contact app Page
     .list-style-none li.divider {
       margin: 10px 0;
       height: 1px;
-      background: #4F5467; }
+      background: #e9ecef; }
     .list-style-none li a {
       padding: 15px 10px;
       display: block;
-      color: #ced4da; }
+      color: #212529; }
       .list-style-none li a:hover {
         color: #fb9678; }
       .list-style-none li a span {
@@ -76,7 +76,7 @@ Contact app Page
 .customtab li a.nav-link {
   border: 0px;
   padding: 15px 20px;
-  color: #ced4da; }
+  color: #212529; }
   .profile-tab li a.nav-link.active,
   .customtab li a.nav-link.active {
     border-bottom: 2px solid #fb9678;

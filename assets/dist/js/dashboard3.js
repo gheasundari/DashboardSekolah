@@ -41,7 +41,7 @@ $(function () {
 
 
                 ],
-                lineColors: ['#fb9678', '#01c0c8', '#8698b7'],
+                lineColors: ['#0270d6', '#3d3d3d', '#e20b0b'],
                 xkey: 'period',
                 ykeys: ['iphone', 'ipad', 'itouch'],
                 labels: ['Site A', 'Site B', 'Site C'],
@@ -50,7 +50,7 @@ $(function () {
                 resize:true,
                 fillOpacity: 0.8,
                 behaveLikeLine: true,
-                gridLineColor: 'rgba(255, 255, 255, 0.1)',
+                gridLineColor: '#e0e0e0',
                 hideHover: 'auto'
         
     });
@@ -98,13 +98,13 @@ Morris.Area({
         labels: ['Site A', 'Site B'],
         pointSize: 0,
         fillOpacity: 0.4,
-        pointStrokeColors:['#b4becb', '#01c0c8'],
+        pointStrokeColors:['#b4becb', '#e20b0b'],
         behaveLikeLine: true,
-        gridLineColor: 'rgba(255, 255, 255, 0.1)',
+        gridLineColor: '#e0e0e0',
         lineWidth: 0,
         smooth: false,
         hideHover: 'auto',
-        lineColors: ['#b4becb', '#01c0c8'],
+        lineColors: ['#b4becb', '#e20b0b'],
         resize: true
         
     });

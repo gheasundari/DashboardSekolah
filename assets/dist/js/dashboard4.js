@@ -36,7 +36,7 @@ $(function () {
 
 
                 ]
-        , lineColors: ['#a5d9c7']
+        , lineColors: ['#3d3d3d']
         , xkey: 'period'
         , ykeys: ['iphone']
         , labels: ['Site A']
@@ -45,7 +45,7 @@ $(function () {
         , fillOpacity: 1
         , resize: true
         , behaveLikeLine: true
-        , gridLineColor: 'rgba(255, 255, 255, 0.1)'
+        , gridLineColor: '#e0e0e0'
         , hideHover: 'auto'
     });
     
@@ -107,7 +107,7 @@ $(function () {
 
 // Sky Icons
 var icons = new Skycons({
-        "color": "#ff6849"
+        "color": "#ed4040"
     })
     , list = [
         "clear-day", "clear-night", "partly-cloudy-day"

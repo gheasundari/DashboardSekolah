@@ -39,7 +39,7 @@ Form icheck
   display: inline-block;
   height: 30px;
   width: 30px;
-  background: #adb5bd;
+  background: #343a40;
   text-align: center; }
 
 .icolors > li.active:after {
@@ -57,16 +57,16 @@ Form icheck
   background: #fec107; }
 
 .icolors > li.info {
-  background: #03a9f3; }
+  background: #5475ed; }
 
 .icolors > li.green {
   background: #00c292; }
 
 .icolors > li.red {
-  background: #e46a76; }
+  background: #ed4040; }
 
 .icolors > li.purple {
-  background: #ab8ce4; }
+  background: #7015bd; }
 
 .icolors > li.blue {
   background: #01c0c8; }

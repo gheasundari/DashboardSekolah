@@ -38,3 +38,10 @@ tempat_lahir, tanggal_lahir,
 (select r.id_rombel from dim_rombel r WHERE r.nama_rombel = x.rombel) as rombel
 FROM xl_sekolah x
 GROUP by x.nisn
+
+https://dev.mysql.com/doc/refman/8.0/en/replace.html#:~:text=REPLACE%20works%20exactly%20like%20INSERT,extension%20to%20the%20SQL%20standard.
+ REPLACE INTO test2 VALUES (1, 'Old', '2014-08-20 18:47:00');
+
+ https://www.mysqltutorial.org/mysql-replace.aspx
+
+ https://www.tutorialspoint.com/mysql/mysql-handling-duplicates.htm

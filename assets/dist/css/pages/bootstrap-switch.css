@@ -40,7 +40,7 @@ Bootstrap Switch
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info,
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info {
   color: #fff;
-  background: #03a9f3; }
+  background: #5475ed; }
 
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success,
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success {
@@ -55,12 +55,12 @@ Bootstrap Switch
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger,
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger {
   color: #fff;
-  background: #e46a76; }
+  background: #ed4040; }
 
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default,
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default {
-  color: #adb5bd;
-  background: #303641; }
+  color: #343a40;
+  background: #f8f9fa; }
 
 .onoffswitch {
   position: relative;

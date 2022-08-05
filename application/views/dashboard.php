@@ -7,13 +7,13 @@
 	<!-- ============================================================== -->
 	<div class="row page-titles">
 		<div class="col-md-5 align-self-center">
-			<h4 class="text-themecolor">Starter Page</h4>
+			<h4 class="text-themecolor">Dashboard Tahun <?= date('Y') ?></h4>
 		</div>
 		<div class="col-md-7 align-self-center text-right">
 			<div class="d-flex justify-content-end align-items-center">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-					<li class="breadcrumb-item active">Starter Page</li>
+					<li class="breadcrumb-item active">Dashboard</li>
 				</ol>
 				<button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
 			</div>
@@ -29,14 +29,24 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-					This is some text within a card block.
+					<canvas id="myChart"></canvas>
 
+					<h1>TEST CHART</h1>
+					<div class="row mt-4">
+						<div class="col-12"></div>
+						<canvas id="line" height="100"></canvas>
+					</div>
+					<div class="row mt-2">
+						<div class="col-8"></div>
+						<canvas id="bar"></canvas>
+						<div class="col-4"></div>
+						<canvas id="pie"></canvas>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div>
-		<canvas id="myChart"></canvas>
 	</div>
 
 	<!-- ============================================================== -->
@@ -103,33 +113,69 @@
 <!-- ============================================================== -->
 <!-- End Container fluid  -->
 <!-- ============================================================== -->
-
 <script>
-	const labels = [
-		'Laki',
-		'Perempuan'
+	const baseUrl = "<?php echo base_url(); ?>"
+	const myChart = (chartType) => {
+		$.ajax({
+			url: baseUrl + 'C_Dashboard/chartCountSiswaByYear',
+			dataType: 'json',
+			method: 'get',
+			success: data => {
+				let chartX = []
+				let chartY = []
+				data.map(data => {
+					chartX.push(data.tahun)
+					chartY.push(data.jumlah_siswa)
 
-	];
+				})
+				// console.log(data);
 
-	const data = {
-		labels: labels,
-		datasets: [{
-			label: 'My First dataset',
-			backgroundColor: 'rgb(255, 99, 132)',
-			borderColor: 'rgb(255, 99, 132)',
-			data: [10, 10, 5, 2, 20, 30, 45],
-		}]
-	};
 
-	const config = {
-		type: 'bar',
-		data: data,
-		options: {}
-	};
-</script>
-<script>
-	const myChart = new Chart(
-		document.getElementById('myChart'),
-		config
-	);
+				const chartData = {
+					labels: chartX,
+					datasets: [{
+						label: 'Sales',
+						data: chartY,
+						backgroundColor: ['lightcoral'],
+						borderColor: ['lightcoral'],
+						borderWidth: 4
+
+					}]
+				}
+				const ctx = document.getElementById(chartType).getContext('2d')
+				const config = {
+					type: chartType,
+					data: chartData
+				}
+				switch (chartType) {
+					case 'pie':
+						const pieColor = ['salmon', 'red', 'green', 'blue', 'aliceblue', 'pink', 'orange', 'gold', 'plum', 'darkcyan', 'wheat', 'silver']
+						chartData.datasets[0].backgroundColor = pieColor
+						chartData.datasets[0].borderColor = pieColor
+						break;
+					case 'bar':
+						chartData.datasets[0].backgroundColor = ['skyblue']
+						chartData.datasets[0].borderColor = ['skyblue']
+						break;
+					default:
+						config.options = {
+							scales: {
+								y: {
+									beginAtZero: true
+								}
+							}
+						}
+				}
+				const chart = new Chart(ctx, config)
+			},
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(xhr.status);
+				alert(thrownError);
+			}
+		})
+	}
+
+	// myChart('pie')
+	// myChart('line')
+	myChart('bar')
 </script>

@@ -48,14 +48,8 @@
                         <li><a href="index10.html">Alamat</a></li>
                     </ul>
                 </li>
-                <li> <a class=" waves-effect waves-dark" href="<?= base_url('C_ETL/index') ?>" aria-expanded="false"><i class="ti-files"></i><span class="hide-menu">Upload File</span></span></a></li>
-                </li>
-                <li>
-                    <a class="waves-effect waves-dark" href="pages-login.html" aria-expanded="false">
-                        <i class="far fa-circle text-success"></i>
-                        <span class="hide-menu">Log Out</span>
-                    </a>
-                </li>
+                <li> <a class="waves-effect waves-dark" href="<?= base_url('C_ETL/index') ?>" aria-expanded="false"><i class="ti-files"></i><span class="hide-menu">Upload File</span></span></a></li>
+                <li> <a class="waves-effect waves-dark" href="<?= base_url('dashboard') ?>" aria-expanded="false"><i class="fa fa-circle-o text-danger"></i><span class="hide-menu">Log Out</span></a></li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

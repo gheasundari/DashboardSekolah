@@ -6,9 +6,9 @@ $(function () {
     jQuery(document).on('click', '.mega-dropdown', function (e) {
         e.stopPropagation()
     });
-    // ==============================================================
+    // ============================================================== 
     // This is for the top header part and sidebar part
-    // ==============================================================
+    // ==============================================================  
     var set = function () {
         var width = (window.innerWidth > 0) ? window.innerWidth : this.screen.width;
         var topOffset = 55;
@@ -30,9 +30,9 @@ $(function () {
     };
     $(window).ready(set);
     $(window).on("resize", set);
-    // ==============================================================
+    // ============================================================== 
     // Theme options
-    // ==============================================================
+    // ==============================================================     
     $(".sidebartoggler").on('click', function () {
         if ($("body").hasClass("mini-sidebar")) {
             $("body").trigger("resize");
@@ -54,49 +54,48 @@ $(function () {
     $(".search-box a, .search-box .app-search .srh-btn").on('click', function () {
         $(".app-search").toggle(200);
     });
-    // ==============================================================
+    // ============================================================== 
     // Right sidebar options
-    // ==============================================================
+    // ============================================================== 
     $(".right-side-toggle").click(function () {
         $(".right-sidebar").slideDown(50);
         $(".right-sidebar").toggleClass("shw-rside");
     });
-    // ==============================================================
+    // ============================================================== 
     // This is for the floating labels
-    // ==============================================================
+    // ============================================================== 
     $('.floating-labels .form-control').on('focus blur', function (e) {
         $(this).parents('.form-group').toggleClass('focused', (e.type === 'focus' || this.value.length > 0));
     }).trigger('blur');
-
-    // ==============================================================
+    
+    // ============================================================== 
     //tooltip
-    // ==============================================================
+    // ============================================================== 
     $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
-    // ==============================================================
+    // ============================================================== 
     //Popover
-    // ==============================================================
+    // ============================================================== 
     $(function () {
          $('[data-toggle="popover"]').popover()
     })
-
-    // ==============================================================
+       
+    // ============================================================== 
     // Perfact scrollbar
-    // ==============================================================
+    // ============================================================== 
     $('.scroll-sidebar, .right-side-panel, .message-center, .right-sidebar').perfectScrollbar();
-	$('#chat, #msg, #comment, #todo').perfectScrollbar();
     // ============================================================== 
     // Resize all elements
-    // ==============================================================
+    // ============================================================== 
     $("body").trigger("resize");
-    // ==============================================================
+    // ============================================================== 
     // To do list
-    // ==============================================================
+    // ============================================================== 
     $(".list-task li label").click(function () {
         $(this).toggleClass("task-done");
     });
-    // ==============================================================
+    // ============================================================== 
     // Collapsable cards
     // ==============================================================
     $('a[data-action="collapse"]').on('click', function (e) {
@@ -114,10 +113,10 @@ $(function () {
     $('a[data-action="close"]').on('click', function () {
         $(this).closest('.card').removeClass().slideUp('fast');
     });
-    // ==============================================================
+    // ============================================================== 
     // Color variation
     // ==============================================================
-
+    
     var mySkins = [
         "skin-default",
         "skin-green",
@@ -161,7 +160,7 @@ $(function () {
             window.alert('Please use a modern browser to properly view this template!')
         }
     }
-
+    
     /**
      * Replaces the old skin with the new skin
      * @param String cls the new skin class
@@ -188,15 +187,7 @@ $(function () {
     }
     setup()
     $("#themecolors").on("click", "a", function () {
-        $("#themecolors li a").removeClass("working"),
+        $("#themecolors li a").removeClass("working"), 
         $(this).addClass("working")
-    })
-
-    // For Custom File Input
-    $('.custom-file-input').on('change',function(){
-        //get the file name
-        var fileName = $(this).val();
-        //replace the "Choose a file" label
-        $(this).next('.custom-file-label').html(fileName);
     })
 });

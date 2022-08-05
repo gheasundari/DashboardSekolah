@@ -44,12 +44,12 @@ Seach listing Page
   .search-listing li {
     list-style: none;
     padding: 15px 0;
-    border-bottom: 1px solid #4F5467; }
+    border-bottom: 1px solid #e9ecef; }
     .search-listing li h3 {
       margin: 0px;
       font-size: 18px; }
       .search-listing li h3 a {
-        color: #03a9f3; }
+        color: #5475ed; }
         .search-listing li h3 a:hover {
           text-decoration: underline; }
     .search-listing li a {
@@ -65,7 +65,7 @@ Gridstack Dragable portlet
   font-size: 20px; }
 
 .grid-stack > .grid-stack-item > .grid-stack-item-content {
-  border: 1px solid #4F5467; }
+  border: 1px solid #e9ecef; }
 
 /*******************
 Grid page
@@ -77,8 +77,8 @@ Grid page
 .show-grid [class^=col-] {
   padding-top: 10px;
   padding-bottom: 10px;
-  border: 1px solid #4F5467;
-  background-color: #272c36; }
+  border: 1px solid #e9ecef;
+  background-color: #e9ecef; }
 
 /*******************
 Date paginator page
@@ -91,7 +91,7 @@ Date paginator page
 .datepaginator .pagination li a {
   padding: 0 5px;
   height: 60px;
-  border: 1px solid #4F5467;
+  border: 1px solid #e9ecef;
   float: left;
   position: relative; }
 
@@ -99,7 +99,7 @@ Date paginator page
 Notification page Jquery toaster
 ******************/
 .jq-icon-info {
-  background-color: #03a9f3;
+  background-color: #5475ed;
   color: #fff; }
 
 .jq-icon-success {
@@ -107,7 +107,7 @@ Notification page Jquery toaster
   color: #fff; }
 
 .jq-icon-error {
-  background-color: #e46a76;
+  background-color: #ed4040;
   color: #fff; }
 
 .jq-icon-warning {
@@ -121,7 +121,7 @@ Notification page Jquery toaster
 list and media
 ******************/
 .list-group a.list-group-item:hover {
-  background: #272c36; }
+  background: #e9ecef; }
 
 .list-group-item.active,
 .list-group .list-group-item.active:hover {
@@ -129,11 +129,11 @@ list and media
   border-color: #fb9678; }
 
 .list-group-item.disabled {
-  color: #ced4da;
-  background: #272c36; }
+  color: #6c757d;
+  background: #e9ecef; }
 
 .media {
-  border: 1px solid #4F5467;
+  border: 1px solid #e9ecef;
   margin-bottom: 10px;
   padding: 15px; }
 
@@ -145,50 +145,3 @@ list and media
 
 .plugin-details-active {
   display: block; }
-
-/*******************
-/*Image Cropper Page
-******************/
-.docs-buttons .btn,
-.docs-data .input-group {
-  margin-bottom: 5px; }
-
-/*******************
-/*Form Typahead Page
-******************/
-.twitter-typeahead {
-  width: 100%; }
-
-.twitter-typeahead .tt-menu {
-  width: 100%;
-  background: #fff;
-  border: 1px solid #303641;
-  border-radius: 5px;
-  padding: .75rem 0; }
-
-.twitter-typeahead .tt-menu .tt-suggestion {
-  padding: .25rem .75rem;
-  cursor: pointer; }
-
-.twitter-typeahead .tt-menu .tt-suggestion:hover {
-  background-color: #fb9678;
-  color: #fff; }
-
-.twitter-typeahead .empty-message {
-  padding: 5px 10px;
-  text-align: center; }
-
-.twitter-typeahead .rtl-typeahead .tt-menu {
-  text-align: right; }
-
-.twitter-typeahead .league-name {
-  margin: 0 10px 5px;
-  padding: 7px 5px 10px;
-  border-bottom: 1px solid #272c36; }
-
-.scrollable-dropdown .twitter-typeahead .tt-menu {
-  max-height: 80px;
-  overflow-y: auto; }
-
-.bootstrap-maxlength {
-  margin-top: .5rem; }

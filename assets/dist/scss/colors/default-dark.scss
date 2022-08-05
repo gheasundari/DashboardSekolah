@@ -3,14 +3,13 @@
     /*Theme Colors*/
     $themecolor: #fb9678;
     $themecolor-alt: #26c6da;
-    $sidebar: #353c48; 
+    $sidebar: #2b2b2b;
     $sidebar-alt:#1f2023;
     $sidebar-text: #8d97ad;
-    $sidebar-icons: #787f91;
-    $topbar:#4c5667;
+    $sidebar-icons: #787f91; 
     // Topbar
     .topbar {
-        background: $topbar; 
+        background: $themecolor;
     }
     //Sidebar
     .sidebar-nav {

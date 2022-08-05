@@ -55,12 +55,12 @@ $(function () {
         , labels: ['iPhone', 'iPad', 'iPod Touch']
         , pointSize: 3
         , fillOpacity: 0
-        , pointStrokeColors: ['#00bfc7', '#fb9678', '#9675ce']
+        , pointStrokeColors:['#888', '#e20b0b', '#f1c411']
         , behaveLikeLine: true
-        , gridLineColor: 'rgba(255, 255, 255, 0.1)'
+        , gridLineColor: '#e0e0e0'
         , lineWidth: 3
         , hideHover: 'auto'
-        , lineColors: ['#00bfc7', '#fb9678', '#9675ce']
+        , lineColors: ['#888', '#e20b0b', '#f1c411']
         , resize: true
     });
     Morris.Area({
@@ -102,7 +102,7 @@ $(function () {
         , fillOpacity: 0.4
         , pointStrokeColors: ['#b4becb', '#01c0c8']
         , behaveLikeLine: true
-        , gridLineColor: 'rgba(255, 255, 255, 0.1)'
+        , gridLineColor: '#e0e0e0'
         , lineWidth: 0
         , smooth: false
         , hideHover: 'auto'

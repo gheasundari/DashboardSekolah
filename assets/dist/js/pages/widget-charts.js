@@ -118,7 +118,7 @@ $(function () {
             color: "#AFAFAF"
             , hoverable: true
             , borderWidth: 0
-            , backgroundColor: 'transparent'
+            , backgroundColor: '#FFF'
         }
         , tooltip: true
         , tooltipOpts: {

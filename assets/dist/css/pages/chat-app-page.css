@@ -35,7 +35,7 @@ chat application Page
     float: left;
     z-index: 9;
     top: 0px;
-    border-right: 1px solid #4F5467; }
+    border-right: 1px solid #e9ecef; }
     .chat-main-box .chat-left-aside .open-panel {
       display: none;
       cursor: pointer;
@@ -57,7 +57,7 @@ chat application Page
       .chat-main-box .chat-left-aside .chat-left-inner .form-control {
         height: 60px;
         padding: 15px;
-        background-image: linear-gradient(#03a9f3, #03a9f3), linear-gradient(#4F5467, #4F5467); }
+        background-image: linear-gradient(#5475ed, #5475ed), linear-gradient(#e9ecef, #e9ecef); }
       .chat-main-box .chat-left-aside .chat-left-inner .style-none {
         padding: 0px; }
         .chat-main-box .chat-left-aside .chat-left-inner .style-none li {
@@ -66,7 +66,7 @@ chat application Page
           .chat-main-box .chat-left-aside .chat-left-inner .style-none li a {
             padding: 20px; }
             .chat-main-box .chat-left-aside .chat-left-inner .style-none li a:hover, .chat-main-box .chat-left-aside .chat-left-inner .style-none li a.active {
-              background: #303641; }
+              background: #f8f9fa; }
   .chat-main-box .chat-right-aside {
     width: calc(100% - 250px);
     float: left; }
@@ -89,16 +89,16 @@ chat application Page
       position: relative; }
       .chat-main-box .chat-right-aside .send-chat-box .form-control {
         border: none;
-        border-top: 1px solid #4F5467;
+        border-top: 1px solid #e9ecef;
         resize: none;
         height: 80px;
         padding-right: 180px; }
         .chat-main-box .chat-right-aside .send-chat-box .form-control:focus {
-          border-color: #4F5467; }
+          border-color: #e9ecef; }
       .chat-main-box .chat-right-aside .send-chat-box .custom-send {
         position: absolute;
         right: 20px;
         bottom: 10px; }
         .chat-main-box .chat-right-aside .send-chat-box .custom-send .cst-icon {
-          color: #ced4da;
+          color: #212529;
           margin-right: 10px; }

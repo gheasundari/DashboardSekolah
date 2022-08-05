@@ -9,9 +9,11 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/images/favicon.png'); ?>">
-    <title>Elite Admin Template - The Ultimate Multipurpose admin template</title>
+    <title><?= base_url() ?>Elite Admin Template - The Ultimate Multipurpose admin template</title>
     <!-- Custom CSS -->
     <link href="<?= base_url('assets/dist/css/style.min.css') ?>" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="<?= base_url('assets/node_modules/jquery/jquery-3.2.1.min.js') ?>"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

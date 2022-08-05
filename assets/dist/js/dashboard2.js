@@ -2,7 +2,7 @@ $(function () {
     "use strict";
     jQuery("#visitfromworld").vectorMap({
             map: "world_mill_en"
-            , backgroundColor: "transparent"
+            , backgroundColor: "#fff"
             , borderColor: "#000"
             , borderOpacity: .9
             , borderWidth: 1
@@ -10,7 +10,7 @@ $(function () {
             , color: "#ddd"
             , regionStyle: {
                 initial: {
-                    fill: "transparent"
+                    fill: "#fff"
                     , "stroke-width": 1
                     , stroke: "#a6b7bf"
                 }
@@ -120,12 +120,12 @@ $(function () {
         , xaxis: {
             show: false
         }
-        , colors: ["#01c0c8"]
+        , colors: ["#ed4040"]
         , grid: {
             color: "#AFAFAF"
             , hoverable: true
             , borderWidth: 0
-            , backgroundColor: 'transparent'
+            , backgroundColor: '#FFF'
         }
         , tooltip: true
         , resize: true
@@ -154,11 +154,11 @@ var sparklineLogin = function () {
         type: 'line'
         , width: '100%'
         , height: '50'
-        , lineColor: '#99d683'
-        , fillColor: '#99d683'
-        , maxSpotColor: '#99d683'
+        , lineColor: '#3d3d3d'
+        , fillColor: '#3d3d3d'
+        , maxSpotColor: '#3d3d3d'
         , highlightLineColor: 'rgba(0, 0, 0, 0.2)'
-        , highlightSpotColor: '#99d683'
+        , highlightSpotColor: '#3d3d3d'
     });
     $("#sparkline9").sparkline([0, 2, 8, 6, 8, 5, 6, 4, 8, 6, 6, 2], {
         type: 'line'

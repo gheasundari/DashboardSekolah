@@ -60,7 +60,7 @@ var plot = $.plot("#placeholder", [getRandomData()], {
         color: "#AFAFAF"
         , hoverable: true
         , borderWidth: 0
-        , backgroundColor: 'transparent'
+        , backgroundColor: '#FFF'
     }
     , tooltip: true
     , tooltipOpts: {
@@ -110,7 +110,7 @@ $(function () {
                 color: "#AFAFAF"
                 , hoverable: true
                 , borderWidth: 0
-                , backgroundColor: 'transparent'
+                , backgroundColor: '#FFF'
             }
             , tooltip: true
             , tooltipOpts: {
@@ -211,7 +211,7 @@ $(function () {
             , minBorderMargin: 20
             , labelMargin: 10
             , backgroundColor: {
-                colors: ["transparent", "transparent"]
+                colors: ["#fff", "#fff"]
             }
             , margin: {
                 top: 8
@@ -227,7 +227,7 @@ $(function () {
                             from: x
                             , to: x + xaxis.tickSize
                         }
-                        , color: "rgba(255, 255, 255, 0.1)"
+                        , color: "#fff"
                     });
                 }
                 return markings;
@@ -277,7 +277,7 @@ $(function () {
             color: "#AFAFAF"
             , hoverable: true
             , borderWidth: 0
-            , backgroundColor: 'transparent'
+            , backgroundColor: '#FFF'
         }
         , tooltip: true
         , tooltipOpts: {
@@ -350,7 +350,7 @@ $(function () {
             , hoverable: true
             , autoHighlight: false
             , mouseActiveRadius: 20
-            , borderColor: 'rgba(255, 255, 255, 0.1)'
+            , borderColor: '#f5f5f5'
         }
         , series: {
             stack: stack
@@ -368,13 +368,13 @@ $(function () {
             , height: 5
         }
         , yaxis: {
-            tickColor: 'rgba(255, 255, 255, 0.1)'
+            tickColor: '#f5f5f5'
             , font: {
                 color: '#bdbdbd'
             }
         }
         , xaxis: {
-            tickColor: 'rgba(255, 255, 255, 0.1)'
+            tickColor: '#f5f5f5'
             , font: {
                 color: '#bdbdbd'
             }

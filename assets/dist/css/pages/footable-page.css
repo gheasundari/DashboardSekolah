@@ -28,24 +28,24 @@ Table- Footable
 ******************/
 #demo-show-entries {
   border: 0;
-  background-image: linear-gradient(#fb9678, #fb9678), linear-gradient(#4F5467, #4F5467);
+  background-image: linear-gradient(#fb9678, #fb9678), linear-gradient(#e9ecef, #e9ecef);
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
   background-position: center bottom, center calc(100% - 1px);
   background-color: transparent;
   transition: background 0s ease-out;
   padding-bottom: 5px;
-  color: #ced4da; }
+  color: #212529; }
   #demo-show-entries:focus {
     outline: none;
-    background-image: linear-gradient(#fb9678, #fb9678), linear-gradient(#4F5467, #4F5467);
+    background-image: linear-gradient(#fb9678, #fb9678), linear-gradient(#e9ecef, #e9ecef);
     background-size: 100% 2px, 100% 1px;
     box-shadow: none;
     transition-duration: 0.3s; }
 
 #demo-input-search2 {
   border: 0;
-  background-image: linear-gradient(#fb9678, #fb9678), linear-gradient(#4F5467, #4F5467);
+  background-image: linear-gradient(#fb9678, #fb9678), linear-gradient(#e9ecef, #e9ecef);
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
   background-position: center bottom, center calc(100% - 1px);
@@ -55,10 +55,10 @@ Table- Footable
   box-shadow: none;
   border-radius: 0;
   margin-left: 10px;
-  color: #ced4da; }
+  color: #212529; }
   #demo-input-search2:focus {
     outline: none;
-    background-image: linear-gradient(#fb9678, #fb9678), linear-gradient(#4F5467, #4F5467);
+    background-image: linear-gradient(#fb9678, #fb9678), linear-gradient(#e9ecef, #e9ecef);
     background-size: 100% 2px, 100% 1px;
     box-shadow: none;
     transition-duration: 0.3s; }
@@ -90,9 +90,3 @@ Table- Footable
   margin-left: 0;
   border-bottom-left-radius: .25rem;
   border-top-left-radius: .25rem; }
-
-#demo-foo-accordion .open > .dropdown-menu {
-  display: block; }
-
-#demo-foo-accordion2 .open > .dropdown-menu {
-  display: block; }

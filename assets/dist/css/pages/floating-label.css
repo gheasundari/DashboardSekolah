@@ -35,13 +35,13 @@ File: scss
   border: none;
   font-family: "Poppins", sans-serif;
   border-radius: 0px;
-  border-bottom: 1px solid #272c36; }
+  border-bottom: 1px solid #e9ecef; }
 
 .floating-labels select.form-control > option {
   font-size: 14px; }
 
 .floating-labels .has-error .form-control {
-  border-bottom: 1px solid #e46a76; }
+  border-bottom: 1px solid #ed4040; }
 
 .floating-labels .has-warning .form-control {
   border-bottom: 1px solid #fec107; }
@@ -54,7 +54,7 @@ File: scss
   border: none; }
 
 .floating-labels label {
-  color: #ced4da;
+  color: #212529;
   position: absolute;
   cursor: auto;
   top: 5px;
@@ -65,7 +65,7 @@ File: scss
 .floating-labels .focused label {
   top: -20px;
   font-size: 12px;
-  color: #adb5bd; }
+  color: #343a40; }
 
 .floating-labels .bar {
   position: relative;
@@ -120,7 +120,7 @@ File: scss
 
 .has-error .bar:before,
 .has-error .bar:after {
-  background: #e46a76; }
+  background: #ed4040; }
 
 .has-warning .form-control:focus ~ label,
 .has-warning .form-control:valid ~ label {
@@ -132,20 +132,20 @@ File: scss
 
 .has-error .form-control:focus ~ label,
 .has-error .form-control:valid ~ label {
-  color: #e46a76; }
+  color: #ed4040; }
 
 .has-feedback label ~ .t-0 {
   top: 0; }
 
 .form-group.error input, .form-group.error select, .form-group.error textarea {
-  border: 1px solid #e46a76; }
+  border: 1px solid #ed4040; }
 
 .form-group.validate input, .form-group.validate select, .form-group.validate textarea {
   border: 1px solid #00c292; }
 
 .form-group.error .help-block ul {
   padding: 0px;
-  color: #e46a76; }
+  color: #ed4040; }
   .form-group.error .help-block ul li {
     list-style: none; }
 

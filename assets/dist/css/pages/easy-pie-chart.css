@@ -70,7 +70,7 @@ Easy pie chart
   z-index: 2;
   font-weight: 600;
   font-size: 18px;
-  color: #adb5bd; }
+  color: #343a40; }
   .percent:after {
     content: '%';
     margin-left: 0.1em;
