@@ -7,7 +7,7 @@
 	<!-- ============================================================== -->
 	<div class="row page-titles">
 		<div class="col-md-5 align-self-center">
-			<h4 class="text-themecolor">Dashboard Tahun <?= date('Y') ?></h4>
+			<h4 class="text-themecolor">Dashboard</h4>
 		</div>
 		<div class="col-md-7 align-self-center text-right">
 			<div class="d-flex justify-content-end align-items-center">
@@ -15,7 +15,6 @@
 					<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
 					<li class="breadcrumb-item active">Dashboard</li>
 				</ol>
-				<button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
 			</div>
 		</div>
 	</div>
@@ -26,27 +25,36 @@
 	<!-- Start Page Content -->
 	<!-- ============================================================== -->
 	<div class="row">
-		<div class="col-12">
+		<div class="col-lg-8 col-md-12">
 			<div class="card">
 				<div class="card-body">
-					<canvas id="myChart"></canvas>
+					<div class="d-flex  align-items-center no-block">
+						<h4 class="card-title ">Jumlah Siswa</h4>
+					</div>
+					<h6 class="text-muted m-b-20">3 Tahun Terakhir</h6>
+					<canvas id="bar"></canvas>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="col-lg-12 col-md-12">
+			<div class="card">
+				<div class="card-body">
+				<canvas id="myChart"></canvas> -->
 
-					<h1>TEST CHART</h1>
-					<div class="row mt-4">
+		<!-- <h1>TEST CHART</h1> -->
+		<!-- <div class="row mt-4">
 						<div class="col-12"></div>
 						<canvas id="line" height="100"></canvas>
 					</div>
 					<div class="row mt-2">
 						<div class="col-8"></div>
-						<canvas id="bar"></canvas>
+
 						<div class="col-4"></div>
 						<canvas id="pie"></canvas>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div>
+		</div> -->
 	</div>
 
 	<!-- ============================================================== -->
@@ -113,69 +121,4 @@
 <!-- ============================================================== -->
 <!-- End Container fluid  -->
 <!-- ============================================================== -->
-<script>
-	const baseUrl = "<?php echo base_url(); ?>"
-	const myChart = (chartType) => {
-		$.ajax({
-			url: baseUrl + 'C_Dashboard/chartCountSiswaByYear',
-			dataType: 'json',
-			method: 'get',
-			success: data => {
-				let chartX = []
-				let chartY = []
-				data.map(data => {
-					chartX.push(data.tahun)
-					chartY.push(data.jumlah_siswa)
-
-				})
-				// console.log(data);
-
-
-				const chartData = {
-					labels: chartX,
-					datasets: [{
-						label: 'Sales',
-						data: chartY,
-						backgroundColor: ['lightcoral'],
-						borderColor: ['lightcoral'],
-						borderWidth: 4
-
-					}]
-				}
-				const ctx = document.getElementById(chartType).getContext('2d')
-				const config = {
-					type: chartType,
-					data: chartData
-				}
-				switch (chartType) {
-					case 'pie':
-						const pieColor = ['salmon', 'red', 'green', 'blue', 'aliceblue', 'pink', 'orange', 'gold', 'plum', 'darkcyan', 'wheat', 'silver']
-						chartData.datasets[0].backgroundColor = pieColor
-						chartData.datasets[0].borderColor = pieColor
-						break;
-					case 'bar':
-						chartData.datasets[0].backgroundColor = ['skyblue']
-						chartData.datasets[0].borderColor = ['skyblue']
-						break;
-					default:
-						config.options = {
-							scales: {
-								y: {
-									beginAtZero: true
-								}
-							}
-						}
-				}
-				const chart = new Chart(ctx, config)
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert(xhr.status);
-				alert(thrownError);
-			}
-		})
-	}
-
-	// myChart('pie')
-	// myChart('line')
-	myChart('bar')
-</script>
+<?php include('scriptdashboard.php') ?>
