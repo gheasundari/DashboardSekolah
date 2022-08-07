@@ -98,18 +98,52 @@ class Import extends CI_Model
     $dataToReplace = [
       'SMP NEGERI' => 'SMPN',
       'SMP N' => 'SMPN',
+      'SMPNEGRI' => 'SMPN',
+      'SMPNEGER' => 'SMPN',
+      'SMPN NEGERI' => 'SMPN',
+      'MTSN NEGERI' => 'MTSN',
       'MTS NEGERI' => 'MTSN',
       'MTS NEGRI' => 'MTSN',
+      'MTS N' => 'MTSN',
       'MTS.N' => 'MTSN',
       'MTs.S' => 'MTSS',
+      'MTS.S' => 'MTSS',
       'MTS 1NEGERI' => 'MTSN 1',
+      '1RENGAT' => '1 RENGAT',
+      '1INDRAGIRI' => '1 INDRAGIRI',
+      'INRAGIRI' => 'INDRAGIRI',
+      'INDERAGIRI' => 'INDRAGIRI',
+      'INSRAGIRI' => 'INDRAGIRI',
+      '04' => '4',
       'INHU' => 'INDRAGIRI HULU',
-    ];
+      'THARIQULHIDAYAH' => 'THARIQUL HIDAYAH',
+      'TARIQUL HIDAYAH' => 'THARIQUL HIDAYAH',
+      'MTSS THARIQUL' => 'MTS THARIQUL',
+      'XXXX' => 'RENGAT',
+      'MTSNURUL FALAH' => 'MTSS NURUL FALAH',
+      'MTSNURUL ULUM' => 'MTSS NURUL ULUM',
+      'RENGATBARAT' => 'RENGAT BARAT',
+      'GANGSAL' => 'GANSAL',
 
+    ];
+    $this->db->query("UPDATE `xl_sekolah` SET `asal_sekolah` = 'LAINNYA' where `asal_sekolah` is null");
     foreach ($dataToReplace as $key => $val) {
-      $this->db->query("UPDATE `xl_sekolah` SET `asal_sekolah` = REPLACE(asal_sekolah, '" . $val . "', '" . $key . "')");
+      // $this->db->query("UPDATE `xl_sekolah` SET `asal_sekolah` = REPLACE(asal_sekolah, '" . $val . "', '" . $key . "')");
+      $this->db->query("UPDATE `xl_sekolah` SET `asal_sekolah` = REPLACE(asal_sekolah, '" . $key . "', '" . $val . "')");
     }
-    // -- $sqlReplace = 'REPLACE(' . ($sqlReplace ? $sqlReplace : 'replace_field') . ', "' . $key . '", "' . $val . '")';
+
+    $dataToUpdate = [
+      'MTS THARIQUL HIDAYAH' => 'MTS THARIQUL HIDAYAH DANAU BARU',
+      'MTS THARIQULHIDAYAH' => 'MTS THARIQUL HIDAYAH DANAU BARU',
+      'MTSS THARIQUL HIDAYAH' => 'MTS THARIQUL HIDAYAH DANAU BARU',
+      'MTSN 1 INDRAGIRI' => 'MTSN 1 INDRAGIRI HULU',
+      'MTSN INDRAGIRI HULU' => 'MTSN 1 INDRAGIRI HULU',
+
+    ];
+    foreach ($dataToUpdate as $key => $val) {
+      // $this->db->query("UPDATE `xl_sekolah` SET `asal_sekolah` = 'MTS THARIQUL HIDAYAH DANAU BARU' where asal_sekolah = 'MTS THARIQULHIDAYAH'");
+      $this->db->query("UPDATE `xl_sekolah` SET `asal_sekolah` = '" . $val . "' where asal_sekolah = '" . $key . "'");
+    }
   }
 
   function insertToFact()

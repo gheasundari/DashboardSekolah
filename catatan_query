@@ -1,1 +1,11 @@
 SELECT count(fs.nisn), dt.tahun FROM `fact_sekolah` fs LEFT JOIN dim_tahun dt ON dt.id_tahun = fs.data_tahun group by dt.tahun
+
+//SEX BY TAHUN
+SELECT SUM(CASE WHEN jenis_kelamin = 13 THEN 1 ELSE 0 END ) AS Pria, SUM(CASE WHEN jenis_kelamin = 14 THEN 1 ELSE 0 END ) AS Perempuan, data_tahun FROM `fact_sekolah` GROUP by data_tahun
+
+
+SELECT SUM(CASE WHEN fs.jenis_kelamin = 13 THEN 1 ELSE 0 END ) AS Pria, SUM(CASE WHEN jenis_kelamin = 14 THEN 1 ELSE 0 END ) AS Perempuan, dt.tahun FROM `fact_sekolah` `fs` LEFT JOIN `dim_jeniskelamin` `js` ON `js`.`id_jeniskelamin` = `fs`.`jenis_kelamin` LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` GROUP BY `dt`.`tahun`
+
+SELECT count(fs.nisn) as jumlah_siswa, js.jenis_kelamin, `dt`.`tahun` FROM `fact_sekolah` `fs` 
+LEFT JOIN `dim_jeniskelamin` `js` ON `js`.`id_jeniskelamin` = `fs`.jenis_kelamin
+LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` GROUP by tahun,js.jenis_kelamin 

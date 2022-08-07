@@ -26,16 +26,37 @@ class C_Dashboard extends CI_Controller
     }
     public function index()
     {
-        $data['CountSiswaByYear'] = $this->Visual->getCountSiswaByYear(date('Y') - 1);
+        // $data['CountSiswaByYear'] = $this->Visual->getCountSiswaByYear(date('Y') - 1);
+        $data['CountSiswaByYear'] = $this->Visual->getCountAsalSekolahByYear('2021');
+        $data['CountSiswaNow'] = $this->Visual->getCountSiswaByYear('2021');
+        // var_dump($data['CountSiswaNow']);
+        // die();
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
-        $this->load->view('dashboard', $data);
+        $this->load->view('v_dashboard', $data);
         $this->load->view('layout/footer');
     }
 
-    public function chartCountSiswaByYear()
+    public function chartCountSiswaByThreeYear()
     {
-        $data = $this->Visual->getCountSiswaByYear(date('Y') - 1);
+        $data = $this->Visual->getCountSiswaByTreeYear(date('Y'));
+        // echo   $data;
+        echo json_encode($data);
+    }
+    public function chartCountSiswaByYear($tahun)
+    {
+        $data = $this->Visual->getCountSiswaByYear($tahun);
+        echo json_encode($data);
+    }
+    public function chartAsalSekolahByYear($tahun)
+    {
+        $data = $this->Visual->getCountAsalSekolahByYear($tahun);
+        echo json_encode($data);
+    }
+
+    public function chartCountGender()
+    {
+        $data = $this->Visual->getCountGender();
         echo json_encode($data);
     }
 }

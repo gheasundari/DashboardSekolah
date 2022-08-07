@@ -106,25 +106,43 @@
 
 <script>
 	const labels = [
-		'Laki',
-		'Perempuan'
-
+		'2020',
+		'2021',
+		'2019',
 	];
 
 	const data = {
 		labels: labels,
 		datasets: [{
-			label: 'My First dataset',
-			backgroundColor: 'rgb(255, 99, 132)',
-			borderColor: 'rgb(255, 99, 132)',
-			data: [10, 10, 5, 2, 20, 30, 45],
-		}]
+				label: 'Laki-laki',
+				backgroundColor: 'rgb(255, 99, 132)',
+				borderColor: 'rgb(255, 99, 132)',
+				data: [10, 10, 5, 2, 20, 30, 45],
+			},
+			{
+				label: 'Perempuan',
+				backgroundColor: 'rgb(100, 99, 132)',
+				borderColor: 'rgb(100, 99, 132)',
+				data: [10, 10, 2, 2, 20, 30, 45],
+			}
+		]
 	};
 
 	const config = {
 		type: 'bar',
 		data: data,
-		options: {}
+		options: {
+			responsive: true,
+			plugins: {
+				legend: {
+					position: 'bottom',
+				},
+				title: {
+					display: true,
+					text: 'Chart.js Bar Chart'
+				}
+			}
+		},
 	};
 </script>
 <script>

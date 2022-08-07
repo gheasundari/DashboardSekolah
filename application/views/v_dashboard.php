@@ -24,15 +24,64 @@
 	<!-- ============================================================== -->
 	<!-- Start Page Content -->
 	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- DASHBOARD 2022 -->
+	<!-- ============================================================== -->
 	<div class="row">
-		<div class="col-lg-8 col-md-12">
+		<div class="col-lg-3 col-md-12">
+			<div class="card bg-purple text-white">
+				<div class="card-body">
+					<h5 class="card-title">Jumlah Siswa</h5>
+					<div class="row">
+						<div class="col-12">
+							<h1 class="text-white"><?= $CountSiswaNow->jumlah_siswa ?></h1>
+							<p class="light_op_text mb-0">2021</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-12">
+			<div class="card bg-danger text-white">
+				<div class="card-body">
+					<h5 class="card-title">Asal Sekolah</h5>
+					<div class="row">
+						<div class="col-6">
+							<h1 class="text-white">$347</h1>
+							<p class="light_op_text">APRIL 2017</p>
+							<b class="text-white">(150 Sales)</b>
+						</div>
+						<div class="col-6">
+							<div id="sales1" class="text-right"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ============================================================== -->
+	<!-- END DASHBOARD 2022 -->
+	<!-- ============================================================== -->
+	<div class="row">
+		<div class="col-lg-6 col-md-12">
 			<div class="card">
 				<div class="card-body">
 					<div class="d-flex  align-items-center no-block">
 						<h4 class="card-title ">Jumlah Siswa</h4>
 					</div>
 					<h6 class="text-muted m-b-20">3 Tahun Terakhir</h6>
-					<canvas id="bar"></canvas>
+					<canvas id="siswa"></canvas>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex  align-items-center no-block">
+						<h4 class="card-title ">Jumlah Siswa <span class="text-muted">(Gender)</span></h4>
+					</div>
+					<h6 class="text-muted m-b-20">3 Tahun Terakhir</h6>
+					<canvas id="gender"></canvas>
 				</div>
 			</div>
 		</div>
