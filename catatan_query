@@ -19,3 +19,6 @@ LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun`
 LEFT JOIN `dim_asalsekolah` `sk` ON `sk`.`id_asalsekolah` = `fs`.`asal_sekolah` 
 GROUP BY `dt`.`tahun`, asal_sekolah
 HAVING `dt`.`tahun` = '2019') as Results
+
+//KIP
+SELECT count(`fs`.`penerima_kip`) as jumlah_kip, `kip`.`penerimakip`, `dt`.`tahun` FROM `fact_sekolah` `fs` LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` LEFT JOIN `dim_penerimakip` `kip` ON `kip`.`id_kip` = `fs`.`penerima_kip` GROUP BY `dt`.`tahun` HAVING `dt`.`tahun` = '2019'
