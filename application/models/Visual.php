@@ -36,39 +36,17 @@ class Visual extends CI_Model
 
     public function getCountGender()
     {
-        // $this->db->select('count(fs.nisn) as jumlah_siswa, dt.tahun');
-        // $this->db->from('fact_sekolah fs');
-        // $this->db->join('dim_tahun dt', 'dt.id_tahun = fs.data_tahun', 'left');
-        // $this->db->group_by('dt.tahun');
-        // $this->db->where('tahun', $tahun);
-        // return $this->db->get()->result();
-        $data =  $this->db->query("SELECT count(fs.nisn) as jumlah_siswa, js.jenis_kelamin, `dt`.`tahun` FROM `fact_sekolah` `fs` 
-        LEFT JOIN `dim_jeniskelamin` `js` ON `js`.`id_jeniskelamin` = `fs`.jenis_kelamin
-        LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` GROUP by tahun,js.jenis_kelamin order by tahun desc");
-        return $data->result();
-    }
-    public function getCountGenderByYear($tahun)
-    {
-        // $this->db->select('count(fs.nisn) as jumlah_siswa, dt.tahun');
-        // $this->db->from('fact_sekolah fs');
-        // $this->db->join('dim_tahun dt', 'dt.id_tahun = fs.data_tahun', 'left');
-        // $this->db->group_by('dt.tahun');
-        // $this->db->where('tahun', $tahun);
-        // return $this->db->get()->result();
         $data =  $this->db->query("SELECT count(fs.nisn) as jumlah_siswa, js.jenis_kelamin, `dt`.`tahun` FROM `fact_sekolah` `fs` 
         LEFT JOIN `dim_jeniskelamin` `js` ON `js`.`id_jeniskelamin` = `fs`.jenis_kelamin
         LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` GROUP by tahun,js.jenis_kelamin order by tahun desc");
         return $data->result();
     }
 
-    public function getCountAsalSekolahByYear($tahun)
+    public function getCountGenderByYear($tahun)
     {
-        $this->db->select('count(fs.nisn) as jumlah_siswa, dt.tahun');
-        $this->db->from('fact_sekolah fs');
-        $this->db->join('dim_tahun dt', 'dt.id_tahun = fs.data_tahun', 'left');
-        $this->db->group_by('dt.tahun');
-        $this->db->having('tahun', $tahun);
-        return $this->db->get()->result();
-        // return $this->db->get_compiled_select();
+        $data =  $this->db->query("SELECT count(fs.nisn) as jumlah_siswa, js.jenis_kelamin, `dt`.`tahun` FROM `fact_sekolah` `fs` 
+        LEFT JOIN `dim_jeniskelamin` `js` ON `js`.`id_jeniskelamin` = `fs`.jenis_kelamin
+        LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` GROUP by tahun,js.jenis_kelamin order by tahun desc");
+        return $data->result();
     }
 }
