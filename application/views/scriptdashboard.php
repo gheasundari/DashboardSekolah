@@ -22,7 +22,7 @@
 					datasets: [{
 						label: 'Siswa',
 						data: chartY,
-						backgroundColor: ['salmon'],
+						backgroundColor: ['salmon', 'rgba(153, 102, 255)', 'rgba(255, 159, 64)'],
 					}]
 				}
 				const ctx = document.getElementById(canvas).getContext('2d')
@@ -64,21 +64,16 @@
 				})
 
 				let chartX = Array.from(labelTahun)
-				// const test = ['salmon', 'red', 'orange']
 				const chartData = {
 					labels: chartX,
 					datasets: [{
 						label: 'Laki',
 						data: chartLK,
 						backgroundColor: ['rgb(77, 150, 255)'],
-						// borderColor: ['lightcoral'],
-						// borderWidth: 1
 					}, {
 						label: 'Perempuan',
 						data: chartPR,
-						backgroundColor: ['lightcoral'],
-						// borderColor: ['lightcoral'],
-						// borderWidth: 1
+						backgroundColor: ['salmon'],
 					}]
 				}
 				const ctx = document.getElementById(canvas).getContext('2d')
@@ -96,33 +91,20 @@
 	}
 	const myChartKip = (chartType, canvas) => {
 		$.ajax({
-			url: baseUrl + 'C_Dashboard/chartCountGender',
+			url: baseUrl + 'C_Dashboard/chartCountKipByThreeYear',
 			dataType: 'json',
 			method: 'get',
 			success: data => {
 				console.log(data);
-				// const ages = [26, 27, 26, 26, 28, 28, 29, 29, 30]
-				// const uniqueAges = ages.filter(unique)
-
-				// console.log(uniqueAges)
 				let labelTahun = new Set()
 				let chartLK = []
 				let chartPR = []
-
-
 				data.map(data => {
-					// // let tahun = data.tahun;
-					// console.log(typeof(data.tahun))
-					// // console.log('a' + data.tahun)
-					// console.log((data.tahun in chartX))
-					// // if ((tahun in chartX) == false) {
-					// // 
-					// // }
 					labelTahun.add(data.tahun)
-					if (data.jenis_kelamin == 'Laki-laki')
-						chartLK.push(data.jumlah_siswa)
+					if (data.penerimakip == 'Ya')
+						chartLK.push(data.jumlah_penerimakip)
 					else
-						chartPR.push(data.jumlah_siswa)
+						chartPR.push(data.jumlah_penerimakip)
 				})
 
 				let chartX = Array.from(labelTahun)
@@ -130,25 +112,34 @@
 				const chartData = {
 					labels: chartX,
 					datasets: [{
-						label: 'Laki',
+						label: 'Menerima',
 						data: chartLK,
 						backgroundColor: ['salmon'],
-						// borderColor: ['lightcoral'],
-						// borderWidth: 1
 					}, {
-						label: 'Perempuan',
+						label: 'Tidak Menerima',
 						data: chartPR,
 						backgroundColor: ['orange'],
-						// borderColor: ['lightcoral'],
-						// borderWidth: 1
 					}]
 				}
+				const options = {
+					scales: {
+						y: {
+							ticks: {
+								format: {
+									style: 'percent'
+								}
+							}
+						}
+					}
+				};
 				const ctx = document.getElementById(canvas).getContext('2d')
-				const config = {
+				const chart = new Chart(ctx, {
 					type: 'bar',
-					data: chartData
-				}
-				const chart = new Chart(ctx, config)
+					data: chartData,
+					options: {
+						indexAxis: 'y',
+					}
+				})
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
 				alert(xhr.status);
@@ -158,4 +149,5 @@
 	}
 	myChart('bar', 'siswa')
 	myChartGender('bar', 'gender')
+	myChartKip('bar', 'kip')
 </script>

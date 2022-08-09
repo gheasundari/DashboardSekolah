@@ -128,6 +128,17 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-lg-6 col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex  align-items-center no-block">
+						<h4 class="card-title ">Penerima KIP</h4>
+					</div>
+					<h6 class="text-muted m-b-20">3 Tahun Terakhir</h6>
+					<canvas id="kip"></canvas>
+				</div>
+			</div>
+		</div>
 		<!-- <div class="col-lg-12 col-md-12">
 			<div class="card">
 				<div class="card-body">

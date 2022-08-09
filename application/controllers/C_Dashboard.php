@@ -49,6 +49,13 @@ class C_Dashboard extends CI_Controller
         // echo   $data;
         echo json_encode($data);
     }
+    public function chartCountKipByThreeYear()
+    {
+        $data = $this->Visual_KIP->getCountKipByThreeYear(date('Y'));
+        // var_dump($data);
+        // die();
+        echo json_encode($data);
+    }
     public function chartCountSiswaByYear($tahun)
     {
         $data = $this->Visual->getCountSiswaByYear($tahun);

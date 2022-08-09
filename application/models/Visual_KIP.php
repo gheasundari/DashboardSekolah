@@ -16,4 +16,10 @@ class Visual_KIP extends CI_Model
         return $data->row();
         // return $this->db->get_compiled_select();
     }
+
+    public function getCountKipByThreeYear($tahun)
+    {
+        $data = $this->db->query("SELECT count(fs.nisn) as jumlah_penerimakip, kip.penerimakip, `dt`.`tahun` FROM `fact_sekolah` `fs` LEFT JOIN `dim_penerimakip` `kip` ON `kip`.`id_kip` = `fs`.penerima_kip LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` GROUP by tahun,kip.penerimakip HAVING tahun >= " . ($tahun - 3) . " order by tahun desc");
+        return $data->result();
+    }
 }
