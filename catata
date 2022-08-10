@@ -1,3 +1,4 @@
+//andra inisiasi
 INSERT INTO xl_sekolah(nisn, nama_lengkap, jenis_kelamin, tempat_lahir,tanggal_lahir,agama,penerima_kip,asal_sekolah,data_tahun)
 SELECT nisn, nama_lengkap, IF(jenis_kelamin = 'L' , 'Laki-laki', 'Perempuan') as jenis_kelamin, upper(tempat_lahir) as tempat_lahir, tanggal_lahir, agama, penerima_kip,upper(asal_sekolah) as asal_sekolah, data_tahun FROM `xls_sekolah` WHERE data_tahun='2019'
 
