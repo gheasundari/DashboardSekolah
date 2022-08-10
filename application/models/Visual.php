@@ -16,7 +16,6 @@ class Visual extends CI_Model
         return $this->db->get()->row();
     }
 
-
     public function getCountSiswaByThreeYear($tahun)
     {
         //SELECT count(fs.nisn) as jumlah_siswa, `dt`.`tahun`

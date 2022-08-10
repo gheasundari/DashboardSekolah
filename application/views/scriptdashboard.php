@@ -22,7 +22,8 @@
 					datasets: [{
 						label: 'Siswa',
 						data: chartY,
-						backgroundColor: ['salmon', 'rgba(153, 102, 255)', 'rgba(255, 159, 64)'],
+						// backgroundColor: ['salmon', 'rgba(153, 102, 255)', 'rgba(255, 159, 64)'],
+						backgroundColor: ['salmon'],
 					}]
 				}
 				const ctx = document.getElementById(canvas).getContext('2d')
@@ -121,24 +122,29 @@
 						backgroundColor: ['orange'],
 					}]
 				}
-				const options = {
-					scales: {
-						y: {
-							ticks: {
-								format: {
-									style: 'percent'
-								}
-							}
-						}
-					}
-				};
+
 				const ctx = document.getElementById(canvas).getContext('2d')
 				const chart = new Chart(ctx, {
+					// options: {
+					// 	// ...
+					// }
 					type: 'bar',
 					data: chartData,
 					options: {
 						indexAxis: 'y',
-					}
+						plugins: {
+							legend: {
+								display: false
+							}
+						},
+						scales: {
+							y: {
+								beginAtZero: true
+							}
+						}
+					},
+					plugins: [ChartDataLabels],
+					// options: {}
 				})
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
