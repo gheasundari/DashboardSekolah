@@ -28,7 +28,7 @@
                 <!-- <li class="nav-small-cap">--- PERSONAL</li>-->
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Dashboard <span class="badge badge-pill badge-cyan ml-auto">10</span></span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="index.html">Asal Sekolah </a></li>
+                        <li><a href="<?= base_url('C_Sekolah') ?>">Asal Sekolah </a></li>
                         <li><a href="index2.html">Jenis Kelamin</a></li>
                         <li><a href="index3.html">Rombel</a></li>
                         <li><a href="index4.html">Agama</a></li>
