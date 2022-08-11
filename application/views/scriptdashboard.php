@@ -17,11 +17,11 @@
 					chartY.push(data.jumlah_siswa)
 
 				})
-				let backgroundColor = ['salmon', 'rgba(153, 102, 255)', 'rgba(255, 159, 64)'];
+				const backgroundColor = ['salmon', 'rgba(153, 102, 255)', 'rgba(255, 159, 64)'];
 				const chartData = {
 					labels: chartX,
 					datasets: [{
-						label: 'Siswa',
+						label: ['Siswa'],
 						data: chartY,
 						backgroundColor: backgroundColor,
 						// backgroundColor: ['salmon'],
@@ -35,7 +35,7 @@
 								weight: 'bold'
 							},
 							padding: 4,
-							color: 'white'
+							color: 'white',
 						}
 					}]
 				}
@@ -44,9 +44,12 @@
 					type: 'bar',
 					data: chartData,
 					options: {
+						layout: {
+							padding: 23
+						},
 						plugins: {
 							legend: {
-								display: true
+								display: false
 							}
 						},
 						scales: {
