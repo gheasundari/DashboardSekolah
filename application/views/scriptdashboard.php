@@ -17,19 +17,45 @@
 					chartY.push(data.jumlah_siswa)
 
 				})
+				let backgroundColor = ['salmon', 'rgba(153, 102, 255)', 'rgba(255, 159, 64)'];
 				const chartData = {
 					labels: chartX,
 					datasets: [{
 						label: 'Siswa',
 						data: chartY,
-						// backgroundColor: ['salmon', 'rgba(153, 102, 255)', 'rgba(255, 159, 64)'],
-						backgroundColor: ['salmon'],
+						backgroundColor: backgroundColor,
+						// backgroundColor: ['salmon'],
+						datalabels: {
+							color: backgroundColor,
+							anchor: 'end',
+							align: 'top',
+							backgroundColor: backgroundColor,
+							borderRadius: 5,
+							font: {
+								weight: 'bold'
+							},
+							padding: 4,
+							color: 'white'
+						}
 					}]
 				}
 				const ctx = document.getElementById(canvas).getContext('2d')
 				const config = {
 					type: 'bar',
-					data: chartData
+					data: chartData,
+					options: {
+						plugins: {
+							legend: {
+								display: true
+							}
+						},
+						scales: {
+							y: {
+								beginAtZero: true
+							}
+						}
+					},
+					plugins: [ChartDataLabels],
 				}
 				const chart = new Chart(ctx, config)
 			},
@@ -43,15 +69,11 @@
 
 	const myChartGender = (chartType, canvas) => {
 		$.ajax({
-			url: baseUrl + 'C_Dashboard/chartCountGender',
+			url: baseUrl + 'C_Dashboard/chartCountGenderByYear',
 			dataType: 'json',
 			method: 'get',
 			success: data => {
 				console.log(data);
-				// const ages = [26, 27, 26, 26, 28, 28, 29, 29, 30]
-				// const uniqueAges = ages.filter(unique)
-
-				// console.log(uniqueAges)
 				let labelTahun = new Set()
 				let chartLK = []
 				let chartPR = []
@@ -71,16 +93,55 @@
 						label: 'Laki',
 						data: chartLK,
 						backgroundColor: ['rgb(77, 150, 255)'],
+						// backgroundColor: ['salmon'],
+						datalabels: {
+							color: ['rgb(77, 150, 255)'],
+							anchor: 'end',
+							align: 'top',
+							backgroundColor: ['rgb(77, 150, 255)'],
+							borderRadius: 5,
+							font: {
+								weight: 'bold'
+							},
+							padding: 4,
+							color: 'white'
+						}
 					}, {
 						label: 'Perempuan',
 						data: chartPR,
 						backgroundColor: ['salmon'],
-					}]
+						datalabels: {
+							color: ['salmon'],
+							anchor: 'end',
+							align: 'top',
+							backgroundColor: ['salmon'],
+							borderRadius: 5,
+							font: {
+								weight: 'bold'
+							},
+							padding: 4,
+							color: 'white'
+						}
+					}],
+
 				}
 				const ctx = document.getElementById(canvas).getContext('2d')
 				const config = {
 					type: 'bar',
-					data: chartData
+					data: chartData,
+					options: {
+						plugins: {
+							legend: {
+								display: true
+							}
+						},
+						scales: {
+							y: {
+								beginAtZero: true
+							}
+						}
+					},
+					plugins: [ChartDataLabels],
 				}
 				const chart = new Chart(ctx, config)
 			},
@@ -90,6 +151,7 @@
 			}
 		})
 	}
+
 	const myChartKip = (chartType, canvas) => {
 		$.ajax({
 			url: baseUrl + 'C_Dashboard/chartCountKipByThreeYear',
@@ -116,10 +178,24 @@
 						label: 'Menerima',
 						data: chartLK,
 						backgroundColor: ['salmon'],
+						datalabels: {
+							font: {
+								weight: 'bold'
+							},
+							padding: 4,
+							color: 'white'
+						}
 					}, {
 						label: 'Tidak Menerima',
 						data: chartPR,
 						backgroundColor: ['orange'],
+						datalabels: {
+							font: {
+								weight: 'bold'
+							},
+							padding: 4,
+							color: 'white'
+						}
 					}]
 				}
 
@@ -134,7 +210,85 @@
 						indexAxis: 'y',
 						plugins: {
 							legend: {
-								display: false
+								display: true
+							}
+						},
+						scales: {
+							y: {
+								beginAtZero: true
+							}
+						}
+					},
+					plugins: [ChartDataLabels],
+					// options: {}
+				})
+			},
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(xhr.status);
+				alert(thrownError);
+			}
+		})
+	}
+
+	const myChartRombel = (chartType, canvas) => {
+		$.ajax({
+			url: baseUrl + 'C_Dashboard/chartCountRombelByYear',
+			dataType: 'json',
+			method: 'get',
+			success: data => {
+				console.log(data);
+				let labelTahun = new Set()
+				let chartMIPA = []
+				let chartIPS = []
+				data.map(data => {
+					labelTahun.add(data.tahun)
+					if (data.nama_rombel == 'MIPA')
+						chartMIPA.push(data.jumlah)
+					else
+						chartIPS.push(data.jumlah)
+				})
+
+				let chartX = Array.from(labelTahun)
+				// const test = ['salmon', 'red', 'orange']
+				const chartData = {
+					labels: chartX,
+					datasets: [{
+						label: 'MIPA',
+						data: chartMIPA,
+						backgroundColor: ['salmon'],
+						datalabels: {
+							font: {
+								weight: 'bold'
+							},
+							padding: 4,
+							color: 'white'
+						}
+					}, {
+						label: 'IPS',
+						data: chartIPS,
+						backgroundColor: ['orange'],
+						datalabels: {
+							font: {
+								weight: 'bold'
+							},
+							padding: 4,
+							color: 'white'
+						}
+					}]
+				}
+
+				const ctx = document.getElementById(canvas).getContext('2d')
+				const chart = new Chart(ctx, {
+					// options: {
+					// 	// ...
+					// }
+					type: 'bar',
+					data: chartData,
+					options: {
+						indexAxis: 'y',
+						plugins: {
+							legend: {
+								display: true
 							}
 						},
 						scales: {
@@ -156,4 +310,5 @@
 	myChart('bar', 'siswa')
 	myChartGender('bar', 'gender')
 	myChartKip('bar', 'kip')
+	myChartRombel('bar', 'rombel')
 </script>

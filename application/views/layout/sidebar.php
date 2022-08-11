@@ -13,18 +13,9 @@
                     <div class="dropdown-menu animated flipInY">
                         <!-- text-->
                         <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
-                        <!-- text-->
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
-                        <!-- text-->
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
-                        <!-- text-->
                         <div class="dropdown-divider"></div>
                         <!-- text-->
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
-                        <!-- text-->
-                        <div class="dropdown-divider"></div>
-                        <!-- text-->
-                        <a href="pages-login.html" class="dropdown-item"><i class="fas fa-power-off"></i> Logout</a>
+                        <a href="pages-login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
                         <!-- text-->
                     </div>
                 </div>
@@ -33,7 +24,7 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li> <a class="waves-effect waves-dark" href="<?= base_url('dashboard') ?>" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Dashboard</span></span></a></li>
+                <li> <a class="waves-effect waves-dark" href="<?= base_url('dashboard') ?>" aria-expanded="false"><i class="icon-home"></i><span class="hide-menu">Beranda</span></span></a></li>
                 <!-- <li class="nav-small-cap">--- PERSONAL</li>-->
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Dashboard <span class="badge badge-pill badge-cyan ml-auto">10</span></span></a>
                     <ul aria-expanded="false" class="collapse">
@@ -49,7 +40,7 @@
                         <li><a href="index10.html">Alamat</a></li>
                     </ul>
                 </li>
-                <li> <a class="waves-effect waves-dark" href="<?= base_url('C_ETL/index') ?>" aria-expanded="false"><i class="ti-files"></i><span class="hide-menu">Upload File</span></span></a></li>
+                <li> <a class="waves-effect waves-dark" href="<?= base_url('etl') ?>" aria-expanded="false"><i class="ti-files"></i><span class="hide-menu">Upload File</span></span></a></li>
                 <li> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-circle-o text-danger"></i><span class="hide-menu">Log Out</span></a></li>
             </ul>
         </nav>

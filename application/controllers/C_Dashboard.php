@@ -32,9 +32,9 @@ class C_Dashboard extends CI_Controller
         // $data['CountSiswaByYear'] = $this->Visual->getCountSiswaByYear(date('Y') - 1);
         $data['CountSiswaByThreeYear'] = $this->Visual->getCountSiswaByThreeYear('2019');
         $data['CountSiswaNow'] = $this->Visual->getCountSiswaByYear('2019');
-        $data['CountAsalSekolahNow'] = $this->Visual_Sekolah->getCountAsalSekolahByYear('2021');
-        $data['CountPenerimaKipNow'] = $this->Visual_KIP->getCountPenerimaKipByYear('2021');
-        $data['CountRombelNow'] = $this->Visual_Rombel->getCountKipByYear('2021');
+        $data['CountAsalSekolahNow'] = $this->Visual_Sekolah->getCountAsalSekolahByYear('2019');
+        $data['CountPenerimaKipNow'] = $this->Visual_KIP->getCountPenerimaKipByYear('2019');
+        $data['CountRombelNow'] = $this->Visual_Rombel->getCountRombelByYear('2019');
         // var_dump($data['CountSiswaByThreeYear'] ?? 'test');
         // die();
         $this->load->view('layout/header');
@@ -61,17 +61,16 @@ class C_Dashboard extends CI_Controller
         $data = $this->Visual->getCountSiswaByYear($tahun);
         echo json_encode($data);
     }
-    // public function chartAsalSekolahByYear($tahun)
-    // {
-    //     $data = $this->Visual->getCountAsalSekolahByYear($tahun);
-    //     // var_dump($data);
-    //     // die();
-    //     echo json_encode($data);
-    // }
 
-    public function chartCountGender()
+    public function chartCountGenderByYear()
     {
-        $data = $this->Visual->getCountGender();
+        $data = $this->Visual->getCountGenderByYear(date('Y'));
+        echo json_encode($data);
+    }
+
+    public function chartCountRombelByYear()
+    {
+        $data = $this->Visual_Rombel->getCountRombelThreeYear(date('Y'));
         echo json_encode($data);
     }
 }
