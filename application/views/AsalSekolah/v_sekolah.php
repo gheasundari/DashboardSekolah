@@ -117,8 +117,8 @@
 <script>
 	jQuery(document).ready(function() {
 		$(".select2").select2();
-		// myChart('line', 'siswa', <?= date('Y') - 1 ?>)
-		getData();
+		myChart('line', 'siswa', <?= date('Y') - 1 ?>)
+		// getData();
 	});
 </script>
-<?php include('sekolah_script_dashboard.php') ?>
+<?php include('sekolah_script_dashboard_2.php') ?>
