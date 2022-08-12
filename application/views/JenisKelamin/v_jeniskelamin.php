@@ -7,14 +7,14 @@
 	<!-- ============================================================== -->
 	<div class="row page-titles">
 		<div class="col-md-5 align-self-center">
-			<h4 class="text-themecolor">Asal Sekolah</h4>
+			<h4 class="text-themecolor">Jenis Kelamin</h4>
 		</div>
 		<div class="col-md-7 align-self-center text-right">
 			<div class="d-flex justify-content-end align-items-center">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
 					<li class="breadcrumb-item">Dashboard</li>
-					<li class="breadcrumb-item active">Asal Sekolah</li>
+					<li class="breadcrumb-item active">Jenis Kelamin</li>
 				</ol>
 			</div>
 		</div>
@@ -32,7 +32,7 @@
 
 				<div class="card-body">
 					<div class="d-flex  align-items-center no-block">
-						<h4 class="card-title ">Asal Sekolah</h4>
+						<h4 class="card-title ">Jenis Kelamin</h4>
 					</div>
 					<div class="form-group row">
 						<label for="example-search-input" class="col-2 col-form-label">Data Tahun</label>
@@ -44,7 +44,20 @@
 							</select>
 						</div>
 					</div>
-					<canvas id="siswa"></canvas>
+					<div class="row">
+						<div class="col-12">
+							<h1>Diagram Batang</h1>
+							<canvas id="jk"></canvas>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<h1>Diagram Pie</h1>
+							<center>
+								<canvas id="jk_pie" width="450" height="450"></canvas>
+							</center>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -117,8 +130,8 @@
 <script>
 	jQuery(document).ready(function() {
 		$(".select2").select2();
-		// myChart('line', 'siswa', <?= date('Y') - 1 ?>)
-		getData();
+		myChart('bar', 'jk', <?= date('Y') - 1 ?>)
+		chartPie('pie', 'jk_pie', <?= date('Y') - 1 ?>)
 	});
 </script>
-<?php include('sekolah_script_dashboard.php') ?>
+<?php include('jk_script_dashboard.php') ?>

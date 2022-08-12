@@ -6,7 +6,7 @@
 <!-- footer -->
 <!-- ============================================================== -->
 <footer class="footer">
-    © 2019 Eliteadmin by themedesigner.in
+    © <?= date('Y') ?> by Ghea Sundari
 </footer>
 <!-- ============================================================== -->
 <!-- End footer -->
@@ -32,6 +32,8 @@
 <!--stickey kit -->
 <script src="<?= base_url('assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js') ?>"></script>
 <script src="<?= base_url('assets/node_modules/sparkline/jquery.sparkline.min.js') ?>"></script>
+<!-- Select2 -->
+<script src="<?= base_url('assets/node_modules/select2/dist/js/select2.full.min.js') ?>" type="text/javascript"></script>
 <!--Custom JavaScript -->
 <script src="<?= base_url('assets/dist/js/custom.min.js') ?>"></script>
 

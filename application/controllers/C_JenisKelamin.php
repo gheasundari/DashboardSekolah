@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class C_Sekolah extends CI_Controller
+class C_JenisKelamin extends CI_Controller
 {
 
     /**
@@ -22,7 +22,7 @@ class C_Sekolah extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Visual_Sekolah');
+        $this->load->model('Visual_JK');
         $this->load->model('Tahun');
     }
 
@@ -38,13 +38,13 @@ class C_Sekolah extends CI_Controller
         // die();
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
-        $this->load->view('AsalSekolah/v_sekolah', $data);
+        $this->load->view('JenisKelamin/v_jeniskelamin', $data);
         $this->load->view('layout/footer');
     }
 
-    public function chartSekolahByYear($tahun)
+    public function chartSexByYear($tahun)
     {
-        $data = $this->Visual_Sekolah->getAsalSekolahByYear($tahun);
+        $data = $this->Visual_JK->getGender($tahun);
         echo json_encode($data);
     }
 }

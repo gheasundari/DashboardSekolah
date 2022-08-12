@@ -54,3 +54,5 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['dashboard'] = 'C_Dashboard';
 $route['etl'] = 'C_ETL';
+$route['dashboard/asalsekolah'] = 'C_Sekolah';
+$route['dashboard/jeniskelamin'] = 'C_JenisKelamin';
