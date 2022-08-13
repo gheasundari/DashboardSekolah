@@ -30,11 +30,11 @@ class C_Dashboard extends CI_Controller
     public function index()
     {
         // $data['CountSiswaByYear'] = $this->Visual->getCountSiswaByYear(date('Y') - 1);
-        $data['CountSiswaByThreeYear'] = $this->Visual->getCountSiswaByThreeYear('2019');
-        $data['CountSiswaNow'] = $this->Visual->getCountSiswaByYear('2019');
-        $data['CountAsalSekolahNow'] = $this->Visual_Sekolah->getCountAsalSekolahByYear('2019');
-        $data['CountPenerimaKipNow'] = $this->Visual_KIP->getCountPenerimaKipByYear('2019');
-        $data['CountRombelNow'] = $this->Visual_Rombel->getCountRombelByYear('2019');
+        $tahun = date('Y');
+        $data['CountSiswaNow'] = $this->Visual->getCountSiswaByYear($tahun);
+        $data['CountAsalSekolahNow'] = $this->Visual_Sekolah->getCountAsalSekolahByYear($tahun);
+        $data['CountPenerimaKipNow'] = $this->Visual_KIP->getCountPenerimaKipByYear($tahun);
+        $data['CountRombelNow'] = $this->Visual_Rombel->getCountRombelByYear($tahun);
         // var_dump($data['CountSiswaByThreeYear'] ?? 'test');
         // die();
         $this->load->view('layout/header');

@@ -45,16 +45,14 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-12">
-							<h1>Diagram Batang</h1>
+						<div class="col-lg-6 col-md-12">
+							<h3 class="mb-3">Diagram Batang</h3>
 							<canvas id="jk"></canvas>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-12">
-							<h1>Diagram Pie</h1>
+						<div class="col-lg-6 col-md-12">
+							<h3 class="mb-3">Diagram Pie</h3>
 							<center>
-								<canvas id="jk_pie" width="450" height="450"></canvas>
+								<canvas id="jk_pie"></canvas>
 							</center>
 						</div>
 					</div>
@@ -130,8 +128,8 @@
 <script>
 	jQuery(document).ready(function() {
 		$(".select2").select2();
-		myChart('bar', 'jk', <?= date('Y') - 1 ?>)
-		chartPie('pie', 'jk_pie', <?= date('Y') - 1 ?>)
+		myChart('bar', 'jk', <?= date('Y') ?>)
+		chartPie('pie', 'jk_pie', <?= date('Y') ?>)
 	});
 </script>
 <?php include('jk_script_dashboard.php') ?>

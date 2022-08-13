@@ -52,10 +52,8 @@
 					<h5 class="card-title">Sekolah Terbanyak</h5>
 					<div class="row">
 						<div class="col-12">
-							<h3 class="text-white"><?= isset($CountAsalSekolahNow->nama_sekolah) ? $CountAsalSekolahNow->nama_sekolah : '-';  ?> </h3>
+							<h4 class="text-white"><?= isset($CountAsalSekolahNow->nama_sekolah) ? $CountAsalSekolahNow->nama_sekolah : '-';  ?> </h4>
 							<p class="light_op_text font-weight-normal mb-0"><?= isset($CountAsalSekolahNow->jumlah_siswa) ? $CountAsalSekolahNow->jumlah_siswa  : '0' ?> Orang</p>
-							<!-- <p class="light_op_text mb-0">2021</p> -->
-							<!-- <b class="text-white">(150 Sales)</b> -->
 						</div>
 					</div>
 				</div>
@@ -70,10 +68,7 @@
 					<h5 class="card-title">Penerima KIP</h5>
 					<div class="row">
 						<div class="col-12">
-							<h1 class="text-white"><?= $CountPenerimaKipNow->jumlah_kip ?> Orang</h1>
-							<!-- <p class="light_op_text font-weight-normal mb-0"><?= $CountAsalSekolahNow->jumlah_siswa ?> Orang</p> -->
-							<!-- <p class="light_op_text mb-0">2021</p> -->
-							<!-- <b class="text-white">(150 Sales)</b> -->
+							<h1 class="text-white"><?= isset($CountPenerimaKipNow->jumlah_kip) ? $CountPenerimaKipNow->jumlah_kip : '0'  ?> Orang</h1>
 						</div>
 					</div>
 				</div>
@@ -85,7 +80,7 @@
 			<div class="card bg-info text-white">
 				<div class="card-body">
 					<p class="light_op_text mb-0"><?= date('Y') ?></p>
-					<h5 class="card-title">Rombel</h5>
+					<h5 class="card-title mb-0">Rombel</h5>
 					<div class="row">
 						<?php
 						$i = 0;

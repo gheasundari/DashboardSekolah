@@ -1,5 +1,6 @@
 <script>
 	const baseUrl = "<?= base_url(); ?>"
+	var chartBar = null;
 	const myChart = (chartType, canvas, tahun) => {
 		$.ajax({
 			url: baseUrl + 'C_JenisKelamin/chartSexByYear/' + tahun,
@@ -42,8 +43,11 @@
 					type: chartType,
 					data: chartData,
 					options: {
+						responsive: true,
+						showScale: true,
+						// maintainAspectRatio: true,
 						layout: {
-							padding: 23
+							padding: 5
 						},
 						plugins: {
 							legend: {
@@ -67,7 +71,7 @@
 					},
 					plugins: [ChartDataLabels],
 				}
-				chart = new Chart(ctx, config)
+				chartBar = new Chart(ctx, config)
 				// chart.update();
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
@@ -77,6 +81,8 @@
 
 		})
 	}
+
+	var chartPersen = null;
 	const chartPie = (chartType, canvas, tahun) => {
 		$.ajax({
 			url: baseUrl + 'C_JenisKelamin/chartSexByYear/' + tahun,
@@ -117,14 +123,11 @@
 					type: chartType,
 					data: chartData,
 					options: {
-						responsive: false,
-						showScale: false,
+						responsive: true,
+						showScale: true,
 						maintainAspectRatio: false,
 						tooltips: {
-							enabled: false
-						},
-						layout: {
-							padding: 23
+							enabled: true
 						},
 						plugins: {
 							datalabels: {
@@ -140,27 +143,27 @@
 								color: '#fff',
 							},
 							legend: {
-								display: false
+								display: true
 							}
 						},
-						// scales: {
-						// 	y: {
-						// 		beginAtZero: true,
-						// 	},
-						// 	x: {
-						// 		ticks: {
-						// 			autoSkip: false,
-						// 			font: {
-						// 				size: 15,
-						// 			}
-						// 		},
-						// 		beginAtZero: true,
-						// 	},
-						// },
+						scales: {
+							// y: {
+							// 	beginAtZero: true,
+							// },
+							// x: {
+							// 	ticks: {
+							// 		autoSkip: false,
+							// 		font: {
+							// 			size: 15,
+							// 		}
+							// 	},
+							// 	beginAtZero: true,
+							// },
+						},
 					},
 					plugins: [ChartDataLabels],
 				}
-				chart = new Chart(ctx, config)
+				chartPersen = new Chart(ctx, config)
 				// chart.update();
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
@@ -169,5 +172,18 @@
 			}
 
 		})
+	}
+
+	function updateChart(option) {
+		var tahunpilihan = option.value;
+		// myChart.tahun = option.value
+		// const text_tahun = $(".text-tahun");
+		// text_tahun.text(tahunpilihan);
+
+		chartBar.destroy();
+		chartPersen.destroy();
+
+		myChart('bar', 'jk', tahunpilihan)
+		chartPie('pie', 'jk_pie', tahunpilihan)
 	}
 </script>

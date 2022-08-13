@@ -18,7 +18,7 @@ class Visual extends CI_Model
 
     public function getCountSiswaByThreeYear($tahun)
     {
-        //SELECT count(fs.nisn) as jumlah_siswa, `dt`.`tahun`
+        // SELECT count(fs.nisn) as jumlah_siswa, `dt`.`tahun`
         // FROM `fact_sekolah` `fs`
         // LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun`
         // GROUP BY `dt`.`tahun`

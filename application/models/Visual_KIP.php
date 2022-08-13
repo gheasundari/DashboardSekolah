@@ -6,13 +6,13 @@ class Visual_KIP extends CI_Model
 {
     public function getCountKipByYear($tahun)
     {
-        $data = $this->db->query("SELECT count(`fs`.`penerima_kip`) as jumlah_kip, `kip`.`penerimakip`, `dt`.`tahun` FROM `fact_sekolah` `fs` LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` LEFT JOIN `dim_penerimakip` `kip` ON `kip`.`id_kip` = `fs`.`penerima_kip` GROUP BY `dt`.`tahun`, `kip`.`penerimakip` HAVING `dt`.`tahun` = '2019' ORDER BY jumlah_kip DESC limit 1");
+        $data = $this->db->query("SELECT count(`fs`.`penerima_kip`) as jumlah_kip, `kip`.`penerimakip`, `dt`.`tahun` FROM `fact_sekolah` `fs` LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` LEFT JOIN `dim_penerimakip` `kip` ON `kip`.`id_kip` = `fs`.`penerima_kip` GROUP BY `dt`.`tahun`, `kip`.`penerimakip` HAVING `dt`.`tahun` = '" . $tahun . "' ORDER BY jumlah_kip DESC limit 1");
         return $data->row();
         // return $this->db->get_compiled_select();
     }
     public function getCountPenerimaKipByYear($tahun)
     {
-        $data = $this->db->query("SELECT count(`fs`.`penerima_kip`) as jumlah_kip, `dt`.`tahun` FROM `fact_sekolah` `fs` LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` LEFT JOIN `dim_penerimakip` `kip` ON `kip`.`id_kip` = `fs`.`penerima_kip` GROUP BY `dt`.`tahun`, `kip`.`penerimakip` HAVING `dt`.`tahun` = '2019' and penerimakip='Ya'");
+        $data = $this->db->query("SELECT count(`fs`.`penerima_kip`) as jumlah_kip, `dt`.`tahun` FROM `fact_sekolah` `fs` LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` LEFT JOIN `dim_penerimakip` `kip` ON `kip`.`id_kip` = `fs`.`penerima_kip` GROUP BY `dt`.`tahun`, `kip`.`penerimakip` HAVING `dt`.`tahun` = '" . $tahun . "' and penerimakip='Ya'");
         return $data->row();
         // return $this->db->get_compiled_select();
     }
