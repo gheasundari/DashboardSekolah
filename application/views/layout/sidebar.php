@@ -30,7 +30,7 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="<?= base_url('dashboard/asalsekolah') ?>">Asal Sekolah </a></li>
                         <li><a href="<?= base_url('dashboard/jeniskelamin') ?>">Jenis Kelamin</a></li>
-                        <li><a href="index3.html">Rombel</a></li>
+                        <li><a href="<?= base_url('dashboard/rombel') ?>">Rombel</a></li>
                         <li><a href="index4.html">Agama</a></li>
                         <li><a href="index5.html">Penerima KIP</a></li>
                         <li><a href="index6.html">Tempat Tanggal Lahir</a></li>

@@ -56,3 +56,4 @@ $route['dashboard'] = 'C_Dashboard';
 $route['etl'] = 'C_ETL';
 $route['dashboard/asalsekolah'] = 'C_Sekolah';
 $route['dashboard/jeniskelamin'] = 'C_JenisKelamin';
+$route['dashboard/rombel'] = 'C_Rombel';
