@@ -31,13 +31,10 @@
                         <li><a href="<?= base_url('dashboard/asalsekolah') ?>">Asal Sekolah </a></li>
                         <li><a href="<?= base_url('dashboard/jeniskelamin') ?>">Jenis Kelamin</a></li>
                         <li><a href="<?= base_url('dashboard/rombel') ?>">Rombel</a></li>
-                        <li><a href="index4.html">Agama</a></li>
+                        <li><a href="<?= base_url('dashboard/agama') ?>">Agama</a></li>
                         <li><a href="index5.html">Penerima KIP</a></li>
-                        <li><a href="index6.html">Tempat Tanggal Lahir</a></li>
                         <li><a href="index7.html">Jenis Tempat Tinggal</a></li>
-                        <li><a href="index8.html">Pendamping</a></li>
                         <li><a href="index9.html">Alat Transportasi</a></li>
-                        <li><a href="index10.html">Alamat</a></li>
                     </ul>
                 </li>
                 <li> <a class="waves-effect waves-dark" href="<?= base_url('etl') ?>" aria-expanded="false"><i class="ti-files"></i><span class="hide-menu">Upload File</span></span></a></li>
