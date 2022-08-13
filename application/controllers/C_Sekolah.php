@@ -47,4 +47,11 @@ class C_Sekolah extends CI_Controller
         $data = $this->Visual_Sekolah->getAsalSekolahByYear($tahun);
         echo json_encode($data);
     }
+
+    public function chartTopAsalSekolah($tahun)
+    {
+        $datas = $this->Visual_Sekolah->getTopAsalSekolah($tahun);
+        echo json_encode($datas);
+        // var_dump($result);
+    }
 }
