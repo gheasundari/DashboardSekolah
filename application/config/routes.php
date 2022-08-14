@@ -59,3 +59,4 @@ $route['dashboard/jeniskelamin'] = 'C_JenisKelamin';
 $route['dashboard/rombel'] = 'C_Rombel';
 $route['dashboard/agama'] = 'C_Agama';
 $route['dashboard/kip'] = 'C_KIP';
+$route['dashboard/jenistinggal'] = 'C_JenisTinggal';
