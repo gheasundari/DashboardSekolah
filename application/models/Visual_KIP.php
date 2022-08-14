@@ -4,6 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Visual_KIP extends CI_Model
 {
+    public function getKIPByYear($tahun)
+    {
+        $data = $this->db->query("SELECT count(`fs`.`penerima_kip`) as jumlah_kip, `kip`.`penerimakip`, `dt`.`tahun` FROM `fact_sekolah` `fs` LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` LEFT JOIN `dim_penerimakip` `kip` ON `kip`.`id_kip` = `fs`.`penerima_kip` GROUP BY `dt`.`tahun`, `kip`.`penerimakip` HAVING `dt`.`tahun` = '" . $tahun . "'");
+        return $data->result();
+        // return $this->db->get_compiled_select();
+    }
     public function getCountKipByYear($tahun)
     {
         $data = $this->db->query("SELECT count(`fs`.`penerima_kip`) as jumlah_kip, `kip`.`penerimakip`, `dt`.`tahun` FROM `fact_sekolah` `fs` LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` LEFT JOIN `dim_penerimakip` `kip` ON `kip`.`id_kip` = `fs`.`penerima_kip` GROUP BY `dt`.`tahun`, `kip`.`penerimakip` HAVING `dt`.`tahun` = '" . $tahun . "' ORDER BY jumlah_kip DESC limit 1");

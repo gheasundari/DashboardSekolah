@@ -126,9 +126,9 @@
 							borderRadius: 5,
 							font: {
 								weight: 'bold',
-								size: 15
+								// size: 15
 							},
-							padding: 5,
+							// padding: 5,
 						}
 					}]
 				}

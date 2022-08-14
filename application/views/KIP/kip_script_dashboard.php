@@ -3,7 +3,7 @@
 	var chartBar = null;
 	const myChart = (chartType, canvas, tahun) => {
 		$.ajax({
-			url: baseUrl + 'C_Rombel/chartRombelByYear/' + tahun,
+			url: baseUrl + 'C_KIP/chartKIPByYear/' + tahun,
 			dataType: 'json',
 			method: 'get',
 			success: data => {
@@ -12,8 +12,8 @@
 				let chartX = []
 				let chartY = []
 				data.map(data => {
-					chartX.push(data.nama_rombel === 'Ya' ? "Menerima" : "Tidak Menerima")
-					chartY.push(data.jumlah)
+					chartX.push(data.penerimakip)
+					chartY.push(data.jumlah_kip)
 
 				})
 				const backgroundColor = ['rgba(153, 102, 255)', 'salmon'];
@@ -85,7 +85,7 @@
 	var chartPersen = null;
 	const chartPie = (chartType, canvas, tahun) => {
 		$.ajax({
-			url: baseUrl + 'C_Rombel/chartRombelByYear/' + tahun,
+			url: baseUrl + 'C_KIP/chartKIPByYear/' + tahun,
 			dataType: 'json',
 			method: 'get',
 			success: data => {
@@ -94,8 +94,8 @@
 				let chartX = []
 				let chartY = []
 				data.map(data => {
-					chartX.push(data.nama_rombel)
-					chartY.push(data.jumlah)
+					chartX.push(data.penerimakip)
+					chartY.push(data.jumlah_kip)
 
 				})
 				const backgroundColor = ['rgba(153, 102, 255)', 'salmon'];
@@ -183,7 +183,7 @@
 		chartBar.destroy();
 		chartPersen.destroy();
 
-		myChart('bar', 'rombel', tahunpilihan)
-		chartPie('pie', 'rombel_pie', tahunpilihan)
+		myChart('bar', 'kip', tahunpilihan)
+		chartPie('pie', 'kip_pie', tahunpilihan)
 	}
 </script>

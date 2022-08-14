@@ -58,3 +58,4 @@ $route['dashboard/asalsekolah'] = 'C_Sekolah';
 $route['dashboard/jeniskelamin'] = 'C_JenisKelamin';
 $route['dashboard/rombel'] = 'C_Rombel';
 $route['dashboard/agama'] = 'C_Agama';
+$route['dashboard/kip'] = 'C_KIP';

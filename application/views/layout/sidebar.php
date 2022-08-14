@@ -32,7 +32,7 @@
                         <li><a href="<?= base_url('dashboard/jeniskelamin') ?>">Jenis Kelamin</a></li>
                         <li><a href="<?= base_url('dashboard/rombel') ?>">Rombel</a></li>
                         <li><a href="<?= base_url('dashboard/agama') ?>">Agama</a></li>
-                        <li><a href="index5.html">Penerima KIP</a></li>
+                        <li><a href="<?= base_url('dashboard/kip') ?>">Penerima KIP</a></li>
                         <li><a href="index7.html">Jenis Tempat Tinggal</a></li>
                         <li><a href="index9.html">Alat Transportasi</a></li>
                     </ul>
