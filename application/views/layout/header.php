@@ -8,8 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/images/favicon.png'); ?>">
-    <title>Elite Admin Template - The Ultimate Multipurpose admin template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/images/users/profilSMA.jpg'); ?>">
+    <title>SMA N 1 Rengat Barat</title>
     <!-- Custom CSS -->
     <link href="<?= base_url('assets/dist/css/style.min.css') ?>" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -32,7 +32,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Elite admin</p>
+            <p class="loader__label">SMA NEGERI 1 RENGAT BARAT</p>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -52,13 +52,14 @@
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="<?= base_url('assets/images/logo-icon.png ') ?>" alt="homepage" class="dark-logo" />
+                            <!-- <img src="<?= base_url('assets/images/logo-icon.png ') ?>" alt="homepage" class="dark-logo" /> -->
                             <!-- Light Logo icon -->
-                            <img src="<?= base_url('assets/images/logo-light-icon.png ') ?>" alt="homepage" class="light-logo" />
+                            <!-- <img src="<?= base_url('assets/images/logo-light-icon.png ') ?>" alt="homepage" class="light-logo" /> -->
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text --><span>
                             <!-- dark Logo text -->
+                            <!-- <img src="<?= base_url('assets/images/logo-text.png ') ?>" alt="homepage" class="dark-logo" /> -->
                             <img src="<?= base_url('assets/images/logo-text.png ') ?>" alt="homepage" class="dark-logo" />
                             <!-- Light Logo text -->
                             <img src="<?= base_url('assets/images/logo-light-text.png ') ?>" class="light-logo" alt="homepage" />

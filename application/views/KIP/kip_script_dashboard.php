@@ -12,7 +12,7 @@
 				let chartX = []
 				let chartY = []
 				data.map(data => {
-					chartX.push(data.penerimakip)
+					chartX.push(data.penerimakip == 'Ya' ? "Menerima" : "Tidak Menerima")
 					chartY.push(data.jumlah_kip)
 
 				})
@@ -94,7 +94,7 @@
 				let chartX = []
 				let chartY = []
 				data.map(data => {
-					chartX.push(data.penerimakip)
+					chartX.push(data.penerimakip == 'Ya' ? "Menerima" : "Tidak Menerima")
 					chartY.push(data.jumlah_kip)
 
 				})

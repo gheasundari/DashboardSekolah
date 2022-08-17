@@ -1,9 +1,10 @@
 <script>
 	const baseUrl = "<?= base_url(); ?>"
 	var chartBar = null;
+	const backgroundColor = ['rgba(153, 102, 255)', 'salmon', 'orange', 'rgb(255, 217, 61)'];
 	const myChart = (chartType, canvas, tahun) => {
 		$.ajax({
-			url: baseUrl + 'C_Rombel/chartRombelByYear/' + tahun,
+			url: baseUrl + 'C_Transportasi/chartTransportasiByYear/' + tahun,
 			dataType: 'json',
 			method: 'get',
 			success: data => {
@@ -12,11 +13,10 @@
 				let chartX = []
 				let chartY = []
 				data.map(data => {
-					chartX.push(data.nama_rombel)
+					chartX.push(data.jenis_transportasi)
 					chartY.push(data.jumlah)
 
 				})
-				const backgroundColor = ['rgba(153, 102, 255)', 'salmon'];
 				const chartData = {
 					labels: chartX,
 					datasets: [{
@@ -45,9 +45,11 @@
 					options: {
 						responsive: true,
 						showScale: true,
-						// maintainAspectRatio: true,
+						maintainAspectRatio: true,
 						layout: {
-							padding: 20
+							padding: {
+								top: 20
+							},
 						},
 						plugins: {
 							legend: {
@@ -61,8 +63,10 @@
 							x: {
 								ticks: {
 									autoSkip: false,
+									// maxRotation: 90,
+									// minRotation: 80,
 									font: {
-										size: 15,
+										size: 9,
 									}
 								},
 								beginAtZero: true,
@@ -85,7 +89,7 @@
 	var chartPersen = null;
 	const chartPie = (chartType, canvas, tahun) => {
 		$.ajax({
-			url: baseUrl + 'C_Rombel/chartRombelByYear/' + tahun,
+			url: baseUrl + 'C_Transportasi/chartTransportasiByYear/' + tahun,
 			dataType: 'json',
 			method: 'get',
 			success: data => {
@@ -94,11 +98,10 @@
 				let chartX = []
 				let chartY = []
 				data.map(data => {
-					chartX.push(data.nama_rombel)
+					chartX.push(data.jenis_transportasi)
 					chartY.push(data.jumlah)
 
 				})
-				const backgroundColor = ['rgba(153, 102, 255)', 'salmon'];
 				const chartData = {
 					labels: chartX,
 					datasets: [{
@@ -110,11 +113,10 @@
 							color: backgroundColor,
 							backgroundColor: 'white',
 							borderRadius: 5,
-							font: {
-								weight: 'bold',
-								// size: 15
-							},
-							padding: 5,
+							// font: {
+							// 	weight: 'bold',
+							// 	// size: 15
+							// },
 						}
 					}]
 				}
@@ -146,25 +148,10 @@
 								display: true
 							}
 						},
-						scales: {
-							// y: {
-							// 	beginAtZero: true,
-							// },
-							// x: {
-							// 	ticks: {
-							// 		autoSkip: false,
-							// 		font: {
-							// 			size: 15,
-							// 		}
-							// 	},
-							// 	beginAtZero: true,
-							// },
-						},
 					},
 					plugins: [ChartDataLabels],
 				}
 				chartPersen = new Chart(ctx, config)
-				// chart.update();
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
 				alert(xhr.status);
@@ -176,14 +163,11 @@
 
 	function updateChart(option) {
 		var tahunpilihan = option.value;
-		// myChart.tahun = option.value
-		// const text_tahun = $(".text-tahun");
-		// text_tahun.text(tahunpilihan);
 
 		chartBar.destroy();
 		chartPersen.destroy();
 
-		myChart('bar', 'rombel', tahunpilihan)
-		chartPie('pie', 'rombel_pie', tahunpilihan)
+		myChart('bar', 'transportasi', tahunpilihan)
+		chartPie('pie', 'transportasi_pie', tahunpilihan)
 	}
 </script>

@@ -24,13 +24,18 @@ class C_JenisTinggal extends CI_Controller
         parent::__construct();
         $this->load->model('Visual_JenisTinggal');
         $this->load->model('Tahun');
+        $this->load->model('Auth_Model');
+        if (!$this->Auth_Model->current_user()) {
+            redirect('Auth/login');
+        }
     }
 
     public function index()
     {
         $data['tahun'] = $this->Tahun->select();
+        $currentuser = $this->Auth_Model->current_user();
         $this->load->view('layout/header');
-        $this->load->view('layout/sidebar');
+        $this->load->view('layout/sidebar', $currentuser);
         $this->load->view('JenisTinggal/v_JenisTinggal', $data);
         $this->load->view('layout/footer');
     }

@@ -19,11 +19,22 @@ class C_ETL extends CI_Controller
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/userguide3/general/urls.html
      */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Auth_Model');
+        if (!$this->Auth_Model->current_user()) {
+            redirect('Auth/login');
+        }
+        if ($this->Auth_Model->current_user()->rules == 2) {
+            redirect('dashboard');
+        }
+    }
     public function index()
     {
-
+        $currentuser = $this->Auth_Model->current_user();
         $this->load->view('layout/header');
-        $this->load->view('layout/sidebar');
+        $this->load->view('layout/sidebar', $currentuser);
         $this->load->view('upload_file/upload_file');
         $this->load->view('layout/footer');
     }

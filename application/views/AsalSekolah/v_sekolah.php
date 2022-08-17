@@ -58,7 +58,7 @@
 					<div class="row mt-2">
 						<div class="col">
 							<center>
-								<h4> JUMLAH SISWA BERDASARKAN SEKOLAH PENYUMBANG SISWA TERBANYAK</h4>
+								<h4> JUMLAH SISWA BERDASARKAN SEKOLAH PENDAFTAR TERBANYAK</h4>
 								<h6> TAHUN <span class="text-tahun">2022</span></h6>
 								<hr />
 							</center>

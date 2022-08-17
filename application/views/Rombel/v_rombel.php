@@ -46,11 +46,11 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-6 col-md-12">
-							<h3 class="mb-3">Diagram Batang</h3>
+							<h5 class="mb-3">JUMLAH SISWA BERDASARKAN ROMBEL </h5>
 							<canvas id="rombel"></canvas>
 						</div>
 						<div class="col-lg-6 col-md-12">
-							<h3 class="mb-3">Diagram Pie</h3>
+							<h5 class="mb-3">PERSENTASE SISWA BERDASARKAN ROMBEL</h5>
 							<center>
 								<canvas id="rombel_pie"></canvas>
 							</center>

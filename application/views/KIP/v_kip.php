@@ -46,11 +46,11 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-6 col-md-12">
-							<h3 class="mb-3">Diagram Batang</h3>
+							<h5 class="mb-3">JUMLAH SISWA BERDASARKAN PENERIMA KIP</h5>
 							<canvas id="kip"></canvas>
 						</div>
 						<div class="col-lg-6 col-md-12">
-							<h3 class="mb-3">Diagram Pie</h3>
+							<h5 class="mb-3">PERSENTASE SISWA BERDASARKAN PENERIMA KIP</h5>
 							<center>
 								<canvas id="kip_pie"></canvas>
 							</center>

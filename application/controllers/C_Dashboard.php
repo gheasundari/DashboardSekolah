@@ -26,19 +26,23 @@ class C_Dashboard extends CI_Controller
         $this->load->model('Visual_Sekolah');
         $this->load->model('Visual_KIP');
         $this->load->model('Visual_Rombel');
+        $this->load->model('Auth_Model');
+        if (!$this->Auth_Model->current_user()) {
+            redirect('Auth/login');
+        }
     }
     public function index()
     {
         // $data['CountSiswaByYear'] = $this->Visual->getCountSiswaByYear(date('Y') - 1);
-        $tahun = date('Y');
+        $tahun = date('Y') - 1;
+
         $data['CountSiswaNow'] = $this->Visual->getCountSiswaByYear($tahun);
         $data['CountAsalSekolahNow'] = $this->Visual_Sekolah->getCountAsalSekolahByYear($tahun);
         $data['CountPenerimaKipNow'] = $this->Visual_KIP->getCountPenerimaKipByYear($tahun);
         $data['CountRombelNow'] = $this->Visual_Rombel->getCountRombelByYear($tahun);
-        // var_dump($data['CountSiswaByThreeYear'] ?? 'test');
-        // die();
+        $currentuser = $this->Auth_Model->current_user();
         $this->load->view('layout/header');
-        $this->load->view('layout/sidebar');
+        $this->load->view('layout/sidebar', $currentuser);
         $this->load->view('v_dashboard', $data);
         $this->load->view('layout/footer');
     }

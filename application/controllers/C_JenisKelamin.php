@@ -24,20 +24,19 @@ class C_JenisKelamin extends CI_Controller
         parent::__construct();
         $this->load->model('Visual_JK');
         $this->load->model('Tahun');
+        $this->load->model('Auth_Model');
+        if (!$this->Auth_Model->current_user()) {
+            redirect('Auth/login');
+        }
     }
 
     public function index()
     {
         // $data['CountSiswaByYear'] = $this->Visual->getCountSiswaByYear(date('Y') - 1);
         $data['tahun'] = $this->Tahun->select();
-        // $data['CountSiswaNow'] = $this->Visual->getCountSiswaByYear('2019');
-        // $data['CountAsalSekolahNow'] = $this->Visual_Sekolah->getCountAsalSekolahByYear('2019');
-        // $data['CountPenerimaKipNow'] = $this->Visual_KIP->getCountPenerimaKipByYear('2019');
-        // $data['CountRombelNow'] = $this->Visual_Rombel->getCountRombelByYear('2019');
-        // var_dump($data['tahun']);
-        // die();
+        $currentuser = $this->Auth_Model->current_user();
         $this->load->view('layout/header');
-        $this->load->view('layout/sidebar');
+        $this->load->view('layout/sidebar', $currentuser);
         $this->load->view('JenisKelamin/v_jeniskelamin', $data);
         $this->load->view('layout/footer');
     }

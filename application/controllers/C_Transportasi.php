@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class C_Agama extends CI_Controller
+class C_Transportasi extends CI_Controller
 {
 
     /**
@@ -22,7 +22,7 @@ class C_Agama extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Visual_Agama');
+        $this->load->model('Visual_Transportasi');
         $this->load->model('Tahun');
         $this->load->model('Auth_Model');
         if (!$this->Auth_Model->current_user()) {
@@ -36,13 +36,13 @@ class C_Agama extends CI_Controller
         $currentuser = $this->Auth_Model->current_user();
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar', $currentuser);
-        $this->load->view('Agama/v_agama', $data);
+        $this->load->view('Transportasi/v_Transportasi', $data);
         $this->load->view('layout/footer');
     }
 
-    public function chartAgamaByYear($tahun)
+    public function chartTransportasiByYear($tahun)
     {
-        $data = $this->Visual_Agama->getAgamaByYear($tahun);
+        $data = $this->Visual_Transportasi->getTransportasiByYear($tahun);
         echo json_encode($data);
     }
 }
