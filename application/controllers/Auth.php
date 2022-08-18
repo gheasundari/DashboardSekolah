@@ -35,7 +35,7 @@ class Auth extends CI_Controller
         $password = $this->input->post('password');
 
         if ($this->Auth_Model->login($username, $password)) {
-            redirect('c_etl', 'refresh');
+            redirect('dashboard', 'refresh');
             // echo "TES";
             // die();
         } else {
