@@ -62,7 +62,7 @@
 						showScale: true,
 						// maintainAspectRatio: true,
 						layout: {
-							padding: 5
+							padding: 20
 						},
 						plugins: {
 							legend: {

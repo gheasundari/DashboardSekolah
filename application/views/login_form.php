@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/images/favicon.png') ?>">
-    <title>Elite Admin Template - The Ultimate Multipurpose admin template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/images/profilSMA.jpg') ?>">
+    <title>SMA N 1 Rengat Barat</title>
 
     <!-- page css -->
     <link href="<?= base_url('assets/dist/css/pages/login-register-lock.css') ?>" rel="stylesheet">
@@ -40,11 +40,11 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <section id="wrapper">
-        <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
+        <div class="login-register" style="background-image:url(../assets/images/background/bg.png);">
             <div class="login-box card">
                 <div class="card-body">
                     <form class="form-horizontal form-material" id="loginform" action="" method="POST">
-                        <h3 class="box-title m-b-20">Sign In</h3>
+                        <h3 class="box-title m-b-20">Login</h3>
                         <?php if ($this->session->flashdata('message_login_error')) : ?>
                             <div class="alert alert-success"><?= $this->session->flashdata('message_login_error') ?>. </div>
                         <?php endif ?>

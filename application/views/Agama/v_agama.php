@@ -128,8 +128,8 @@
 <script>
 	jQuery(document).ready(function() {
 		$(".select2").select2();
-		myChart('bar', 'agama', <?= date('Y') ?>)
-		chartPie('pie', 'agama_pie', <?= date('Y')  ?>)
+		myChart('bar', 'agama', <?= date('Y') - 2 ?>)
+		chartPie('pie', 'agama_pie', <?= date('Y')  - 2 ?>)
 	});
 </script>
 <?php include('agama_script_dashboard.php') ?>

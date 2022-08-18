@@ -7,7 +7,7 @@
         <!-- User Profile-->
         <div class="user-profile">
             <div class="user-pro-body">
-                <div><img src="<?= base_url('assets/images/users/profilSMA.jpg') ?>" alt="user-img" class="img-circle"></div>
+                <div><img src="<?= base_url('assets/images/users/admin.png') ?>" alt="user-img" class="img-circle"></div>
                 <div class="dropdown">
                     <a href="" class="dropdown-toggle u-dropdown link hide-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= htmlentities($name) ?> <small class="text-muted d-block">( <?= htmlentities($rules == 1 ? 'Admin' : 'Kepela Sekolah') ?> )</small><span class="caret"></span></a>
                     <div class="dropdown-menu animated flipInY">
