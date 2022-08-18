@@ -148,17 +148,16 @@ class Import extends CI_Model
 
   function insertToFact()
   {
-    $query = "REPLACE INTO fact_sekolah (nisn, nama_lengkap, jenis_kelamin, tempat_lahir, tanggal_lahir, agama, jenis_tinggal, transportasi, penerima_kip, rombel, asal_sekolah, data_tahun) 
-    SELECT nisn, nama_lengkap, 
-    (select s.id_jeniskelamin from dim_jeniskelamin s WHERE s.jenis_kelamin = x.jenis_kelamin) as jenis_kelamin,
-    tempat_lahir, tanggal_lahir,
-    (select a.id_agama from dim_agama a WHERE a.agama = x.agama) as agama,
-    (select j.id_jenis_tinggal from dim_jenistinggal j WHERE j.jenis_tinggal = x.jenis_tinggal) as jenis_tinggal,
-    (select t.id_transportasi from dim_transportasi t WHERE t.jenis_transportasi = x.transportasi) as transportasi,
-    (select k.id_kip from dim_penerimakip k WHERE k.penerimakip = x.penerima_kip) as penerima_kip,
-    (select r.id_rombel from dim_rombel r WHERE r.nama_rombel = x.rombel) as rombel,
-    (select ss.id_asalsekolah from dim_asalsekolah ss WHERE ss.nama_sekolah = x.asal_sekolah) as asal_sekolah,
-    (select t.id_tahun from dim_tahun t WHERE t.tahun = x.data_tahun) as data_tahun
+    $query = "REPLACE INTO fact_sekolah (nisn, id_jeniskelamin, id_agama, id_jenistinggal, id_alat_transportasi, id_penerimakip, id_rombel, id_asalsekolah, id_tahun) 
+    SELECT nisn, 
+    (select s.id_jeniskelamin from dim_jeniskelamin s WHERE s.jenis_kelamin = x.jenis_kelamin) as id_jeniskelamin,
+    (select a.id_agama from dim_agama a WHERE a.agama = x.agama) as id_agama,
+    (select j.id_jenis_tinggal from dim_jenistinggal j WHERE j.jenis_tinggal = x.jenis_tinggal) as id_jenistinggal,
+    (select t.id_transportasi from dim_transportasi t WHERE t.jenis_transportasi = x.transportasi) as id_alat_transportasi,
+    (select k.id_kip from dim_penerimakip k WHERE k.penerimakip = x.penerima_kip) as id_penerimakip,
+    (select r.id_rombel from dim_rombel r WHERE r.nama_rombel = x.rombel) as id_rombel,
+    (select ss.id_asalsekolah from dim_asalsekolah ss WHERE ss.nama_sekolah = x.asal_sekolah) as id_asalsekolah,
+    (select t.id_tahun from dim_tahun t WHERE t.tahun = x.data_tahun) as id_tahun
     FROM xl_sekolah x
     GROUP by x.nisn
       ";

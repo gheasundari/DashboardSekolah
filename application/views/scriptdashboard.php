@@ -245,7 +245,7 @@
 				let chartIPS = []
 				data.map(data => {
 					labelTahun.add(data.tahun)
-					if (data.nama_rombel == 'MIPA')
+					if (data.rombel == 'MIPA')
 						chartMIPA.push(data.jumlah)
 					else
 						chartIPS.push(data.jumlah)
