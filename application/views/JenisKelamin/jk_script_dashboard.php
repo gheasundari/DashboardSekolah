@@ -178,9 +178,6 @@
 		var tahunpilihan = option.value;
 		const text_tahun = $(".text-tahun");
 		text_tahun.text(tahunpilihan);
-		// myChart.tahun = option.value
-		// const text_tahun = $(".text-tahun");
-		// text_tahun.text(tahunpilihan);
 
 		chartBar.destroy();
 		chartPersen.destroy();

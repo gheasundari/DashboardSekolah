@@ -46,11 +46,13 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-6 col-md-12">
-							<h5 class="mb-3">JUMLAH SISWA BERDASARKAN JENIS KELAMIN</h5>
+							<h5 class="mb-2">JUMLAH SISWA BERDASARKAN JENIS KELAMIN</h5>
+							<h6 class=" mb-3"> TAHUN <span class="text-tahun">2022</span></h6>
 							<canvas id="jk"></canvas>
 						</div>
 						<div class="col-lg-6 col-md-12">
 							<h5 class="mb-3">PERSENTASE SISWA BERDASARKAN JENIS KELAMIN</h5>
+							<h6 class=" mb-3"> TAHUN <span class="text-tahun">2022</span></h6>
 							<center>
 								<canvas id="jk_pie"></canvas>
 							</center>

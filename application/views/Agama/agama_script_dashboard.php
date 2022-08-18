@@ -191,8 +191,8 @@
 	function updateChart(option) {
 		var tahunpilihan = option.value;
 		// myChart.tahun = option.value
-		// const text_tahun = $(".text-tahun");
-		// text_tahun.text(tahunpilihan);
+		const text_tahun = $(".text-tahun");
+		text_tahun.text(tahunpilihan);
 
 		chartBar.destroy();
 		chartPersen.destroy();

@@ -47,10 +47,12 @@
 					<div class="row">
 						<div class="col-lg-6 col-md-12">
 							<h5 class="mb-3">JUMLAH SISWA BERDASARKAN ROMBEL </h5>
+							<h6 class=" mb-3"> TAHUN <span class="text-tahun">2022</span></h6>
 							<canvas id="rombel"></canvas>
 						</div>
 						<div class="col-lg-6 col-md-12">
 							<h5 class="mb-3">PERSENTASE SISWA BERDASARKAN ROMBEL</h5>
+							<h6 class=" mb-3"> TAHUN <span class="text-tahun">2022</span></h6>
 							<center>
 								<canvas id="rombel_pie"></canvas>
 							</center>
