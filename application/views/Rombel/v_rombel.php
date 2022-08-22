@@ -130,8 +130,8 @@
 <script>
 	jQuery(document).ready(function() {
 		$(".select2").select2();
-		myChart('bar', 'rombel', <?= date('Y') - 2 ?>)
-		chartPie('pie', 'rombel_pie', <?= date('Y') - 2 ?>)
+		myChart('bar', 'rombel', <?= date('Y')  ?>)
+		chartPie('pie', 'rombel_pie', <?= date('Y')  ?>)
 	});
 </script>
 <?php include('rombel_script_dashboard.php') ?>

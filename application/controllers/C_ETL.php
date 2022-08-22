@@ -48,7 +48,7 @@ class C_ETL extends CI_Controller
         $this->insertToDim($tahun_data);
         $this->insertToFact();
         $this->session->set_flashdata('success', 'File berhasil di proses.');
-        redirect('c_etl', 'refresh');
+        redirect('C_ETL', 'refresh');
     }
 
     // FUNCTION UPLOAD FILE DAN MASUKAN KE XLS_SEKOLAH di database (TABEL PENAMPUNG)
@@ -66,7 +66,7 @@ class C_ETL extends CI_Controller
             //$data = array('error' => $this->upload->display_errors());
             //echo $data['error']; 
             $this->session->set_flashdata('error_import2', 'File Salah! Mohon upload File Format *.xls');
-            redirect('c_etl', 'refresh');
+            redirect('C_ETL', 'refresh');
         } else {
             $data = array('error' => false);
             $upload_data = $this->upload->data();
@@ -95,7 +95,7 @@ class C_ETL extends CI_Controller
                 $path = './xls/' . $upload_data['file_name'];
                 unlink($path);
                 $this->session->set_flashdata('error', 'File Salah! Mohon upload File sesuai format.');
-                redirect('c_etl', 'refresh');
+                redirect('C_ETL', 'refresh');
             } else {
                 // echo "BENAR FORMAT";
                 $tahun_data = $this->input->post('tahun_data');
@@ -157,6 +157,6 @@ class C_ETL extends CI_Controller
         $this->load->model('Import');
         $this->Import->deleteAll();
         $this->session->set_flashdata('success', 'Data berhasil dihapus semua.');
-        redirect('c_etl', 'refresh');
+        redirect('C_ETL', 'refresh');
     }
 }

@@ -130,8 +130,8 @@
 <script>
 	jQuery(document).ready(function() {
 		$(".select2").select2();
-		myChart('bar', 'kip', <?= date('Y') - 2 ?>)
-		chartPie('pie', 'kip_pie', <?= date('Y') - 2 ?>)
+		myChart('bar', 'kip', <?= date('Y') ?>)
+		chartPie('pie', 'kip_pie', <?= date('Y')  ?>)
 	});
 </script>
 <?php include('kip_script_dashboard.php') ?>

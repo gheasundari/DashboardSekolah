@@ -130,8 +130,8 @@
 <script>
 	jQuery(document).ready(function() {
 		$(".select2").select2();
-		myChart('bar', 'transportasi', <?= date('Y') - 2 ?>)
-		chartPie('pie', 'transportasi_pie', <?= date('Y') - 2 ?>)
+		myChart('bar', 'transportasi', <?= date('Y')  ?>)
+		chartPie('pie', 'transportasi_pie', <?= date('Y') ?>)
 	});
 </script>
 <?php include('transportasi_script_dashboard.php') ?>

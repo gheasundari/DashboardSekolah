@@ -84,7 +84,7 @@
 								<button type="submit" class="btn btn-success">Submit</button>
 								<button type="reset" class="btn btn-dark">Cancel</button>
 								<!-- <button type="reset" class="btn btn-dark">Hapus Data</button> -->
-								<a href="<?= base_url('C_Etl/deleteAll'); ?>">
+								<a href="<?= base_url('C_ETL/deleteAll'); ?>">
 									<button type="button" class="btn btn-danger">Hapus Data</button>
 								</a>
 							</div>

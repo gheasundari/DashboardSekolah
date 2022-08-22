@@ -130,8 +130,8 @@
 <script>
 	jQuery(document).ready(function() {
 		$(".select2").select2();
-		myChart('bar', 'jenistinggal', <?= date('Y') - 2 ?>)
-		chartPie('pie', 'jenistinggal_pie', <?= date('Y') - 2 ?>)
+		myChart('bar', 'jenistinggal', <?= date('Y')  ?>)
+		chartPie('pie', 'jenistinggal_pie', <?= date('Y') ?>)
 	});
 </script>
 <?php include('jenistinggal_script_dashboard.php') ?>
