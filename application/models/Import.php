@@ -14,7 +14,8 @@ class Import extends CI_Model
 
   function uploadXlsToXl($data_tahun)
   {
-    $this->db->query("REPLACE INTO xl_sekolah(nisn, nama_lengkap, jenis_kelamin, tempat_lahir,tanggal_lahir,agama,jenis_tinggal,
+    $this->db->query("REPLACE INTO xl_sekolah(nisn, nama_lengkap, jenis_kelamin,
+     tempat_lahir,tanggal_lahir,agama,jenis_tinggal,
     transportasi,penerima_kip,rombel,asal_sekolah,data_tahun)
     SELECT nisn, nama_lengkap, IF(jenis_kelamin = 'L' , 'Laki-laki', 'Perempuan') as jenis_kelamin, 
     upper(tempat_lahir) as tempat_lahir, tanggal_lahir, agama,
@@ -95,36 +96,15 @@ class Import extends CI_Model
   function repairAsalSekolah()
   {
     //KEY, VAL
-    $dataToReplace = [
-      'SMP NEGERI' => 'SMPN',
-      'SMP N' => 'SMPN',
-      'SMPNEGRI' => 'SMPN',
-      'SMPNEGER' => 'SMPN',
-      'SMPN NEGERI' => 'SMPN',
-      'MTSN NEGERI' => 'MTSN',
-      'MTS NEGERI' => 'MTSN',
-      'MTS NEGRI' => 'MTSN',
-      'MTS N' => 'MTSN',
-      'MTS.N' => 'MTSN',
-      'MTs.S' => 'MTSS',
-      'MTS.S' => 'MTSS',
-      'MTS 1NEGERI' => 'MTSN 1',
-      '1RENGAT' => '1 RENGAT',
-      '1INDRAGIRI' => '1 INDRAGIRI',
-      'INRAGIRI' => 'INDRAGIRI',
-      'INDERAGIRI' => 'INDRAGIRI',
-      'INSRAGIRI' => 'INDRAGIRI',
-      '04' => '4',
-      'INHU' => 'INDRAGIRI HULU',
-      'THARIQULHIDAYAH' => 'THARIQUL HIDAYAH',
-      'TARIQUL HIDAYAH' => 'THARIQUL HIDAYAH',
-      'MTSS THARIQUL' => 'MTS THARIQUL',
-      'XXXX' => 'RENGAT',
-      'MTSNURUL FALAH' => 'MTSS NURUL FALAH',
-      'MTSNURUL ULUM' => 'MTSS NURUL ULUM',
-      'RENGATBARAT' => 'RENGAT BARAT',
-      'GANGSAL' => 'GANSAL',
-
+    $dataToReplace = [ 'SMP NEGERI' => 'SMPN', 'SMP N' => 'SMPN', 'SMPNEGRI' => 'SMPN', 
+    'SMPNEGER' => 'SMPN', 'SMPN NEGERI' => 'SMPN', 'MTSN NEGERI' => 'MTSN', 
+    'MTS NEGERI' => 'MTSN', 'MTS NEGRI' => 'MTSN', 'MTS N' => 'MTSN', 
+    'MTS.N' => 'MTSN','MTs.S' => 'MTSS','MTS.S' => 'MTSS','MTS 1NEGERI' => 'MTSN 1',
+    '1RENGAT' => '1 RENGAT','1INDRAGIRI' => '1 INDRAGIRI',
+    'INRAGIRI' => 'INDRAGIRI','INDERAGIRI' => 'INDRAGIRI','INSRAGIRI' => 'INDRAGIRI','04' => '4',
+    'INHU' => 'INDRAGIRI HULU','THARIQULHIDAYAH' => 'THARIQUL HIDAYAH','TARIQUL HIDAYAH' 
+    => 'THARIQUL HIDAYAH','MTSS THARIQUL' => 'MTS THARIQUL','XXXX' => 'RENGAT',
+    'MTSNURUL FALAH' => 'MTSS NURUL FALAH','MTSNURUL ULUM' => 'MTSS NURUL ULUM','RENGATBARAT' => 'RENGAT BARAT','GANGSAL' => 'GANSAL',
     ];
     $this->db->query("UPDATE `xl_sekolah` SET `asal_sekolah` = 'LAINNYA' where `asal_sekolah` is null");
     foreach ($dataToReplace as $key => $val) {
@@ -148,7 +128,9 @@ class Import extends CI_Model
 
   function insertToFact()
   {
-    $query = "REPLACE INTO fact_sekolah (nisn, id_jeniskelamin, id_agama, id_jenistinggal, id_alat_transportasi, id_penerimakip, id_rombel, id_asalsekolah, id_tahun) 
+    $query = "REPLACE INTO fact_sekolah 
+    (nisn, id_jeniskelamin, id_agama, id_jenistinggal,
+    id_alat_transportasi, id_penerimakip, id_rombel, id_asalsekolah, id_tahun) 
     SELECT nisn, 
     (select s.id_jeniskelamin from dim_jeniskelamin s WHERE s.jenis_kelamin = x.jenis_kelamin) as id_jeniskelamin,
     (select a.id_agama from dim_agama a WHERE a.agama = x.agama) as id_agama,
