@@ -6,6 +6,7 @@ class Tahun extends CI_Model
 {
   public function select()
   {
+    //Mengambil semua isi tabel dim_tahun
     $this->db->select('id_tahun, tahun');
     $this->db->order_by('tahun', 'DESC');
     $query = $this->db->get('dim_tahun');
@@ -14,6 +15,8 @@ class Tahun extends CI_Model
 
   public function selectThreeYear()
   {
+    //Mengambil semua isi tabel dim_tahun 3 tahun teratas
+    // limit(3) mengartikan 3 data terakhir
     $this->db->select('id_tahun, tahun');
     $this->db->order_by('tahun', 'DESC');
     $this->db->limit(3);
