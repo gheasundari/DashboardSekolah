@@ -96,15 +96,16 @@ class Import extends CI_Model
   function repairAsalSekolah()
   {
     //KEY, VAL
-    $dataToReplace = [ 'SMP NEGERI' => 'SMPN', 'SMP N' => 'SMPN', 'SMPNEGRI' => 'SMPN', 
-    'SMPNEGER' => 'SMPN', 'SMPN NEGERI' => 'SMPN', 'MTSN NEGERI' => 'MTSN', 
-    'MTS NEGERI' => 'MTSN', 'MTS NEGRI' => 'MTSN', 'MTS N' => 'MTSN', 
-    'MTS.N' => 'MTSN','MTs.S' => 'MTSS','MTS.S' => 'MTSS','MTS 1NEGERI' => 'MTSN 1',
-    '1RENGAT' => '1 RENGAT','1INDRAGIRI' => '1 INDRAGIRI',
-    'INRAGIRI' => 'INDRAGIRI','INDERAGIRI' => 'INDRAGIRI','INSRAGIRI' => 'INDRAGIRI','04' => '4',
-    'INHU' => 'INDRAGIRI HULU','THARIQULHIDAYAH' => 'THARIQUL HIDAYAH','TARIQUL HIDAYAH' 
-    => 'THARIQUL HIDAYAH','MTSS THARIQUL' => 'MTS THARIQUL','XXXX' => 'RENGAT',
-    'MTSNURUL FALAH' => 'MTSS NURUL FALAH','MTSNURUL ULUM' => 'MTSS NURUL ULUM','RENGATBARAT' => 'RENGAT BARAT','GANGSAL' => 'GANSAL',
+    $dataToReplace = [
+      'SMP NEGERI' => 'SMPN', 'SMP N' => 'SMPN', 'SMPNEGRI' => 'SMPN',
+      'SMPNEGER' => 'SMPN', 'SMPN NEGERI' => 'SMPN', 'MTSN NEGERI' => 'MTSN',
+      'MTS NEGERI' => 'MTSN', 'MTS NEGRI' => 'MTSN', 'MTS N' => 'MTSN',
+      'MTS.N' => 'MTSN', 'MTs.S' => 'MTSS', 'MTS.S' => 'MTSS', 'MTS 1NEGERI' => 'MTSN 1',
+      '1RENGAT' => '1 RENGAT', '1INDRAGIRI' => '1 INDRAGIRI',
+      'INRAGIRI' => 'INDRAGIRI', 'INDERAGIRI' => 'INDRAGIRI', 'INSRAGIRI' => 'INDRAGIRI', '04' => '4',
+      'INHU' => 'INDRAGIRI HULU', 'THARIQULHIDAYAH' => 'THARIQUL HIDAYAH', 'TARIQUL HIDAYAH'
+      => 'THARIQUL HIDAYAH', 'MTSS THARIQUL' => 'MTS THARIQUL', 'XXXX' => 'RENGAT',
+      'MTSNURUL FALAH' => 'MTSS NURUL FALAH', 'MTSNURUL ULUM' => 'MTSS NURUL ULUM', 'RENGATBARAT' => 'RENGAT BARAT', 'GANGSAL' => 'GANSAL',
     ];
     $this->db->query("UPDATE `xl_sekolah` SET `asal_sekolah` = 'LAINNYA' where `asal_sekolah` is null");
     foreach ($dataToReplace as $key => $val) {
@@ -130,7 +131,7 @@ class Import extends CI_Model
   {
     $query = "REPLACE INTO fact_sekolah 
     (nisn, id_jeniskelamin, id_agama, id_jenistinggal,
-    id_alat_transportasi, id_penerimakip, id_rombel, id_asalsekolah, id_tahun) 
+    id_alat_transportasi, id_penerimakip, id_rombel, id_sekolahasal, data_tahun) 
     SELECT nisn, 
     (select s.id_jeniskelamin from dim_jeniskelamin s WHERE s.jenis_kelamin = x.jenis_kelamin) as id_jeniskelamin,
     (select a.id_agama from dim_agama a WHERE a.agama = x.agama) as id_agama,
@@ -138,8 +139,8 @@ class Import extends CI_Model
     (select t.id_transportasi from dim_transportasi t WHERE t.jenis_transportasi = x.transportasi) as id_alat_transportasi,
     (select k.id_kip from dim_penerimakip k WHERE k.penerimakip = x.penerima_kip) as id_penerimakip,
     (select r.id_rombel from dim_rombel r WHERE r.nama_rombel = x.rombel) as id_rombel,
-    (select ss.id_asalsekolah from dim_asalsekolah ss WHERE ss.nama_sekolah = x.asal_sekolah) as id_asalsekolah,
-    (select t.id_tahun from dim_tahun t WHERE t.tahun = x.data_tahun) as id_tahun
+    (select ss.id_asalsekolah from dim_asalsekolah ss WHERE ss.nama_sekolah = x.asal_sekolah) as id_sekolahasal,
+    (select t.id_tahun from dim_tahun t WHERE t.tahun = x.data_tahun) as data_tahun
     FROM xl_sekolah x
     GROUP by x.nisn
       ";

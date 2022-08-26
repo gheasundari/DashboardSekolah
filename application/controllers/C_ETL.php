@@ -42,13 +42,13 @@ class C_ETL extends CI_Controller
     function prosesUpload()
     {
         $tahun_data = $this->input->post('tahun_data');
-        $this->etl_upload();
-        $this->uploadToXlTable($tahun_data);
-        $this->transform();
-        $this->insertToDim($tahun_data);
-        $this->insertToFact();
-        $this->session->set_flashdata('success', 'File berhasil di proses.');
-        redirect('C_ETL', 'refresh');
+        $this->etl_upload(); //tabel xls
+        // $this->uploadToXlTable($tahun_data); // xls to xl
+        // $this->transform(); // proses transform
+        // $this->insertToDim($tahun_data); //dimasukan ketabel dim
+        // $this->insertToFact(); // dimasukan le tabel fact
+        // $this->session->set_flashdata('success', 'File berhasil di proses.');
+        // redirect('c_etl', 'refresh');
     }
 
     // FUNCTION UPLOAD FILE DAN MASUKAN KE XLS_SEKOLAH di database (TABEL PENAMPUNG)
@@ -66,7 +66,7 @@ class C_ETL extends CI_Controller
             //$data = array('error' => $this->upload->display_errors());
             //echo $data['error']; 
             $this->session->set_flashdata('error_import2', 'File Salah! Mohon upload File Format *.xls');
-            redirect('C_ETL', 'refresh');
+            redirect('c_etl', 'refresh');
         } else {
             $data = array('error' => false);
             $upload_data = $this->upload->data();
@@ -78,24 +78,55 @@ class C_ETL extends CI_Controller
 
             //Sheet Mainan
             $data = $this->excel_reader->sheets[0];
+
+            // echo "<br/>";
+            // var_dump(strtoupper($data['cells'][1][2]));
+            // var_dump(strtoupper($data['cells'][1][2]) != 'NAMA');
+            // echo "<br/>";
+            // var_dump(strtoupper($data['cells'][1][4]));
+            // var_dump(strtoupper($data['cells'][1][4]) != 'JK');
+            // echo "<br/>";
+            // var_dump(strtoupper($data['cells'][1][6]));
+            // var_dump(strtoupper($data['cells'][1][6]) != 'TEMPAT LAHIR');
+            // echo "<br/>";
+            // var_dump(strtoupper($data['cells'][1][7]));
+            // var_dump(strtoupper($data['cells'][1][7]) != 'TANGGAL LAHIR');
+            // echo "<br/>";
+            // var_dump(strtoupper($data['cells'][1][9]));
+            // var_dump(strtoupper($data['cells'][1][9]) != 'AGAMA');
+            // echo "<br/>";
+            // var_dump(strtoupper($data['cells'][1][17]));
+            // var_dump(strtoupper($data['cells'][1][17]) != 'JENIS TINGGAL');
+            // echo "<br/>";
+            // var_dump(strtoupper($data['cells'][1][18]));
+            // var_dump(strtoupper($data['cells'][1][18]) != 'ALAT TRANSPORTASI');
+            // echo "<br/>";
+            // var_dump(strtoupper($data['cells'][1][25]));
+            // var_dump(strtoupper($data['cells'][1][25]) != 'ROMBEL SAAT INI');
+            // echo "<br/>";
+            // var_dump(strtoupper($data['cells'][1][28]));
+            // var_dump(strtoupper($data['cells'][1][28]) != 'PENERIMA KIP');
+            // // die();
+            // echo "<br/>";
             $dataexcel = array();
             if (
-                $data['cells'][1][2] != 'Nama'
-                and $data['cells'][1][4] != 'JK'
-                and $data['cells'][1][6] != 'Tempat Lahir'
-                and $data['cells'][1][7] != 'Tanggal Lahir'
-                and $data['cells'][1][9] != 'Agama'
-                and $data['cells'][1][17] != 'Jenis Tinggal'
-                and $data['cells'][1][18] != 'Alat Transportasi'
-                and $data['cells'][1][25] != 'Rombel Saat Ini'
-                and $data['cells'][1][23] != 'KIP'
-                and $data['cells'][1][39] != 'Sekolah Asal'
+                $data['numCols'] != 48
+                or strtoupper($data['cells'][1][2]) != 'NAMA'
+                or strtoupper($data['cells'][1][4]) != 'JK'
+                or strtoupper($data['cells'][1][6]) != 'TEMPAT LAHIR'
+                or strtoupper($data['cells'][1][7]) != 'TANGGAL LAHIR'
+                or strtoupper($data['cells'][1][9]) != 'AGAMA'
+                or strtoupper($data['cells'][1][17]) != 'JENIS TINGGAL'
+                or strtoupper($data['cells'][1][18]) != 'ALAT TRANSPORTASI'
+                or strtoupper($data['cells'][1][25]) != 'ROMBEL SAAT INI'
+                or strtoupper($data['cells'][1][28]) != 'PENERIMA KIP'
+                or strtoupper($data['cells'][1][39]) != 'SEKOLAH ASAL'
             ) {
                 // echo "SALAH FORMAT";
                 $path = './xls/' . $upload_data['file_name'];
                 unlink($path);
                 $this->session->set_flashdata('error', 'File Salah! Mohon upload File sesuai format.');
-                redirect('C_ETL', 'refresh');
+                redirect('c_etl', 'refresh');
             } else {
                 // echo "BENAR FORMAT";
                 $tahun_data = $this->input->post('tahun_data');
@@ -113,9 +144,11 @@ class C_ETL extends CI_Controller
                     $dataexcel[$i - 1]['penerima_kip'] = $data['cells'][$i][23];
                     $dataexcel[$i - 1]['asal_sekolah'] = $data['cells'][$i][39];
                     $dataexcel[$i - 1]['data_tahun'] =  $tahun_data;
-                    $this->Import->tambah_data_sekolah($dataexcel[$i - 1]);
+                    $this->Import->tambah_data_sekolah($dataexcel[$i - 1]); //MENAMBAHKAN KE XLS
                 }
             }
+            $path = './xls/' . $upload_data['file_name'];
+            unlink($path);
         }
     }
 
@@ -157,6 +190,6 @@ class C_ETL extends CI_Controller
         $this->load->model('Import');
         $this->Import->deleteAll();
         $this->session->set_flashdata('success', 'Data berhasil dihapus semua.');
-        redirect('C_ETL', 'refresh');
+        redirect('c_etl', 'refresh');
     }
 }

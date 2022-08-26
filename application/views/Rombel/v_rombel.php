@@ -38,6 +38,7 @@
 						<label for="example-search-input" class="col-2 col-form-label">Data Tahun</label>
 						<div class="col-10">
 							<select class="select2 form-control custom-select" style="width: 50%; height:36px;" name='tahun' onchange="updateChart(this)">
+								<option>Pilih Tahun</option>
 								<?php foreach ($tahun as $row) { ?>
 									<option><?= $row->tahun ?></option>
 								<?php } ?>
