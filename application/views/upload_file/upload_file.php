@@ -58,11 +58,12 @@
 									<label>Data Tahun</label>
 									<div class="form-group">
 										<select name="tahun_data" class="custom-select col-12" id="inlineFormCustomSelect" required>
+											<option selected>Pilih Tahun</option>
 											<?php
 											for ($i = date('Y'); $i >= date('Y') - 5; $i--) {
 												echo "<option value='$i'";
 												if (date('Y') == $i) {
-													echo "selected";
+													// echo "selected";
 												}
 												echo ">$i</option>";
 											}
@@ -100,59 +101,51 @@
 	</div>
 	<div class="row">
 		<div class="col-12">
-			<?php if ($this->session->flashdata('success')) { ?>
-				<div class="alert alert-success">
-					<?= $this->session->flashdata('success') ?>
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-				</div>
-			<?php } else if ($this->session->flashdata('error')) {  ?>
-				<div class="alert alert-danger">
-					<?= $this->session->flashdata('error') ?>
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-				</div>
-			<?php } else if ($this->session->flashdata('warning')) {  ?>
-
-				<?php echo $this->session->flashdata('warning'); ?>;
-
-			<?php } else if ($this->session->flashdata('info')) {  ?>
-
-				<?php echo $this->session->flashdata('info'); ?>;
-
-			<?php } ?>
-		</div>
-		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
 					<h4 class="card-title">Data</h4>
 					<div class="table-responsive">
-						<table class="table color-table purple-table">
+						<table class="table color-table purple-table ">
 							<thead>
 								<tr>
 									<th>No</th>
+									<th>Nama File</th>
 									<th>Data Tahun</th>
 									<th>Aksi</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>1</td>
-									<td>
-										<img src="<?= base_url('assets/icons/microsoft-excel-icon.svg') ?>" width="30px" height="30px" alt="Data Tahun 2019" class="mr-2" />
-										Data Tahun 2019
-									</td>
-									<td><button type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i> </button></td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>
-										<img src="<?= base_url('assets/icons/microsoft-excel-icon.svg') ?>" width="30px" height="30px" alt="Data Tahun 2019" class="mr-2" />
-										Data Tahun 2019
-									</td>
-									<td><button type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i> </button></td>
-								</tr>
-							</tbody>
-						</table><?php
+								<!-- <?php
+										var_dump($tahun[0]->berkas);
+										?> -->
+								<?php $i = 1;
+								foreach ($tahun as $row) { ?>
+									<tr>
+										<td class="align-middle"><?= $i++ ?></td>
+										<td class="align-middle">
+											<h4>File Data Tahun <?= $row->data_tahun ?></h4>
+											<ul class="">
 
+												<?php
+												foreach ($row->berkas as $t) { ?>
+													<li><img src=" <?= base_url('assets/icons/microsoft-excel-icon.svg') ?>" width="20px" height="20px" alt="Data Tahun 2019" class="mr-2" />
+														<a href="<?= base_url($t->path_file) ?>"><?= $t->file_name ?></a>
+													</li>
+												<?php } ?>
+											</ul>
+										</td>
+										<td class="align-middle"><?= $row->data_tahun ?></td>
+										<td class="align-middle">
+											<!-- <a href="<?= base_url($row->path_file) ?>" class="btn btn-warning btn-circle"> <i class="fa fa-download"></i></a> -->
+											<a href="<?= base_url('C_ETL/deletebyyear/'.$row->data_tahun)?>">
+											<button type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i> </button>
+											</a>
+										</td>
+									</tr>
+								<?php } ?>
+							</tbody>
+						</table>
+						<!-- <?php
 								$dirFiles = array();
 								$url = 'xls/';
 								if ($handle = opendir($url)) {
@@ -172,7 +165,7 @@
 								foreach ($dirFiles as $file) {
 									echo "<a href=$file>$file</a><br>";
 								}
-								?>
+								?> -->
 					</div>
 				</div>
 			</div>

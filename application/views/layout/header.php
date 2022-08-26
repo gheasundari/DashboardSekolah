@@ -23,9 +23,28 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+    <style>
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            /* font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px; */
+        }
+    </style>
 </head>
 
 <body class="skin-default-dark fixed-layout">
+    <!-- <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> -->
+    <button onclick="topFunction()" id="myBtn" class="btn btn-info btn-circle"><i class="fa fa-arrow-up"></i> </button>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -90,3 +109,4 @@
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
+        

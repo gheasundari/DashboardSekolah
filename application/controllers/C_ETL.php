@@ -23,6 +23,7 @@ class C_ETL extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Auth_Model');
+        $this->load->model('Import');
         if (!$this->Auth_Model->current_user()) {
             redirect('Auth/login');
         }
@@ -33,9 +34,27 @@ class C_ETL extends CI_Controller
     public function index()
     {
         $currentuser = $this->Auth_Model->current_user();
+        $data['file'] = $this->Import->selectFile();
+        $tahun = $this->Import->selecttahunfile();
+        // var_dump($tahun[0]->test = 1);
+        // var_dump($tahun[0]);
+        // die;
+        foreach ($tahun as $row) {
+            $berkas = $this->Import->selectfilebyyear($row->data_tahun);
+            // var_dump($berkas);
+            // foreach($berkas as $b){
+            $row->berkas = $berkas;
+            // }
+            // echo $row->data_tahun;
+        }
+        $data['tahun'] = $tahun;
+        // var_dump($data['tahun']);
+        // die();
+        // var_dump($tahun);
+        // die;
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar', $currentuser);
-        $this->load->view('upload_file/upload_file');
+        $this->load->view('upload_file/upload_file', $data);
         $this->load->view('layout/footer');
     }
 
@@ -43,12 +62,12 @@ class C_ETL extends CI_Controller
     {
         $tahun_data = $this->input->post('tahun_data');
         $this->etl_upload(); //tabel xls
-        // $this->uploadToXlTable($tahun_data); // xls to xl
-        // $this->transform(); // proses transform
-        // $this->insertToDim($tahun_data); //dimasukan ketabel dim
-        // $this->insertToFact(); // dimasukan le tabel fact
-        // $this->session->set_flashdata('success', 'File berhasil di proses.');
-        // redirect('c_etl', 'refresh');
+        $this->uploadToXlTable($tahun_data); // xls to xl
+        $this->transform(); // proses transform
+        $this->insertToDim($tahun_data); //dimasukan ketabel dim
+        $this->insertToFact(); // dimasukan le tabel fact
+        $this->session->set_flashdata('success', 'File berhasil di proses.');
+        redirect('c_etl', 'refresh');
     }
 
     // FUNCTION UPLOAD FILE DAN MASUKAN KE XLS_SEKOLAH di database (TABEL PENAMPUNG)
@@ -63,7 +82,7 @@ class C_ETL extends CI_Controller
         $tahun_data = $this->input->post('tahun_data');
         $this->load->model('Import');
         if (!$this->upload->do_upload('fxls')) {
-            //$data = array('error' => $this->upload->display_errors());
+            $data = array('error' => $this->upload->display_errors());
             //echo $data['error']; 
             $this->session->set_flashdata('error_import2', 'File Salah! Mohon upload File Format *.xls');
             redirect('c_etl', 'refresh');
@@ -73,10 +92,11 @@ class C_ETL extends CI_Controller
             $this->load->library('excel_reader');
             $this->excel_reader->setOutputEncoding('UTF-16');
             $file = $upload_data['full_path'];
+
             $this->excel_reader->read($file);
             error_reporting(E_ALL ^ E_NOTICE);
 
-            //Sheet Mainan
+            // //Sheet Mainan
             $data = $this->excel_reader->sheets[0];
 
             // echo "<br/>";
@@ -110,8 +130,8 @@ class C_ETL extends CI_Controller
             // echo "<br/>";
             $dataexcel = array();
             if (
-                $data['numCols'] != 48
-                or strtoupper($data['cells'][1][2]) != 'NAMA'
+                // $data['numCols'] != 48
+                strtoupper($data['cells'][1][2]) != 'NAMA'
                 or strtoupper($data['cells'][1][4]) != 'JK'
                 or strtoupper($data['cells'][1][6]) != 'TEMPAT LAHIR'
                 or strtoupper($data['cells'][1][7]) != 'TANGGAL LAHIR'
@@ -129,6 +149,7 @@ class C_ETL extends CI_Controller
                 redirect('c_etl', 'refresh');
             } else {
                 // echo "BENAR FORMAT";
+                // die();
                 $tahun_data = $this->input->post('tahun_data');
                 $this->load->model('Import');
                 for ($i = 2; $i <= $data['numRows']; $i++) {
@@ -146,9 +167,13 @@ class C_ETL extends CI_Controller
                     $dataexcel[$i - 1]['data_tahun'] =  $tahun_data;
                     $this->Import->tambah_data_sekolah($dataexcel[$i - 1]); //MENAMBAHKAN KE XLS
                 }
+                $datafile = array(
+                    'path_file' => 'xls/' . $upload_data['file_name'],
+                    'file_name' => $upload_data['file_name'],
+                    'data_tahun' => $tahun_data
+                );
+                $this->Import->uploadfile($datafile);
             }
-            $path = './xls/' . $upload_data['file_name'];
-            unlink($path);
         }
     }
 
@@ -185,6 +210,20 @@ class C_ETL extends CI_Controller
         $this->Import->insertToFact();
     }
 
+    function deletebyyear($tahun)
+    {
+        $this->load->model('Import');
+        $berkas = $this->Import->selectfilebyyear($tahun);
+        
+        foreach ($berkas as $row) {
+            unlink('./' . $row->path_file);
+        }
+        $test = $this->Import->deleteByYear($tahun);
+
+        // var_dump($testaja);
+        $this->session->set_flashdata('success', 'Data berhasil dihapus semua.');
+        redirect('c_etl', 'refresh');
+    }
     function deleteAll()
     {
         $this->load->model('Import');

@@ -4,6 +4,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Import extends CI_Model
 {
+  function selecttahunfile(){
+    $query = $this->db->select(
+      'data_tahun')->distinct()->order_by('data_tahun')->get('data_excel');
+    return $query->result();
+  }
+  function selectFile(){
+    $query = $this->db->order_by('data_tahun', 'desc')->get('data_excel');
+    return $query->result();
+  }
+  function selectfilebyyear($tahun){
+    $query = $this->db->order_by('data_tahun', 'desc')->where('data_tahun', $tahun)->get('data_excel');
+    return $query->result();
+  }
+
+  function uploadfile($dataexcel)
+  {
+    // $anggotaganti=$this
+    // $dataexcel=$this->db->query("REPLACE into xls_penelitian (id, judul, anggota, tahun, jenis, dana, prodi, status) 
+    //    select id, judul, $anggota, tahun, jenis, dana, prodi, status from xls_penelitian");
+    $this->db->replace('data_excel', $dataexcel);
+  }
   function tambah_data_sekolah($dataexcel)
   {
     // $anggotaganti=$this
@@ -147,6 +168,22 @@ class Import extends CI_Model
     $this->db->query($query);
   }
 
+  public function deleteByYear($tahun){
+    // ->get_compiled_select();
+    $this->db->delete('xls_sekolah', array('data_tahun' => $tahun));
+    $this->db->delete('xl_sekolah', array('data_tahun' => $tahun));
+    $id_tahun = $this->db->select('id_tahun')->where('tahun', $tahun)->get('dim_tahun')->row_array()['id_tahun'];
+    $this->db->delete('fact_sekolah', array('data_tahun' => $id_tahun));
+    $this->db->delete('dim_tahun', array('tahun' => $tahun));
+    $this->db->delete('data_excel', array('data_tahun' => $tahun));
+    // die();
+    // return $tahun;
+  }
+  
+  public function deleteberkas($tahun){
+    $this->db->delete('data_excel', array('data_tahun' => $tahun));
+  }
+  
   public function deleteAll()
   {
     $this->db->empty_table('dim_agama');
