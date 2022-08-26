@@ -49,6 +49,7 @@
 		</div>
 		<div class="col-12">
 			<div class="card">
+
 				<div class="card-body">
 					<form action="<?= base_url('C_ETL/prosesUpload') ?>" method="post" enctype="multipart/form-data">
 						<div class="row">
@@ -81,15 +82,98 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<button type="submit" class="btn btn-success">Submit</button>
-								<button type="reset" class="btn btn-dark">Cancel</button>
+								<button type="submit" class="btn btn-success"><i class="fa fa-upload"></i> Submit</button>
+								<button type="reset" class="btn btn-info"><i class="fa fa-refresh"></i> Reset</button>
 								<!-- <button type="reset" class="btn btn-dark">Hapus Data</button> -->
+								<a href="<?= base_url('DataBenar/Format Benar.xls'); ?>">
+									<button type="button" class="btn btn-warning"><i class="fa fa-file-excel-o"></i> Download Format</button>
+								</a>
 								<a href="<?= base_url('C_ETL/deleteAll'); ?>">
 									<button type="button" class="btn btn-danger">Hapus Data</button>
 								</a>
 							</div>
 						</div>
 					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<?php if ($this->session->flashdata('success')) { ?>
+				<div class="alert alert-success">
+					<?= $this->session->flashdata('success') ?>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+				</div>
+			<?php } else if ($this->session->flashdata('error')) {  ?>
+				<div class="alert alert-danger">
+					<?= $this->session->flashdata('error') ?>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+				</div>
+			<?php } else if ($this->session->flashdata('warning')) {  ?>
+
+				<?php echo $this->session->flashdata('warning'); ?>;
+
+			<?php } else if ($this->session->flashdata('info')) {  ?>
+
+				<?php echo $this->session->flashdata('info'); ?>;
+
+			<?php } ?>
+		</div>
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Data</h4>
+					<div class="table-responsive">
+						<table class="table color-table purple-table">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Data Tahun</th>
+									<th>Aksi</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>
+										<img src="<?= base_url('assets/icons/microsoft-excel-icon.svg') ?>" width="30px" height="30px" alt="Data Tahun 2019" class="mr-2" />
+										Data Tahun 2019
+									</td>
+									<td><button type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i> </button></td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>
+										<img src="<?= base_url('assets/icons/microsoft-excel-icon.svg') ?>" width="30px" height="30px" alt="Data Tahun 2019" class="mr-2" />
+										Data Tahun 2019
+									</td>
+									<td><button type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i> </button></td>
+								</tr>
+							</tbody>
+						</table><?php
+
+								$dirFiles = array();
+								$url = 'xls/';
+								if ($handle = opendir($url)) {
+
+									while (false !== ($entry = readdir($handle))) {
+
+
+										if ($entry != "." && $entry != ".." && $entry != "index.php") {
+											$dirFiles[] = $entry;
+										}
+									}
+
+									closedir($handle);
+								}
+
+								sort($dirFiles);
+								foreach ($dirFiles as $file) {
+									echo "<a href=$file>$file</a><br>";
+								}
+								?>
+					</div>
 				</div>
 			</div>
 		</div>
