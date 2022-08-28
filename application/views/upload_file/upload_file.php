@@ -154,7 +154,7 @@
 						</table><?php
 
 								$dirFiles = array();
-								$url = 'xls/';
+								$url = 'DataBenar/';
 								if ($handle = opendir($url)) {
 
 									while (false !== ($entry = readdir($handle))) {
