@@ -19,7 +19,36 @@
 <!-- All Jquery -->
 <!-- ============================================================== -->
 
+<script>
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+    var div = document.getElementById('content');
+    var div2 = document.getElementById('penerimakip');
+    var hs = div.scrollWidth > div.clientWidth;
+    var vs = div.scrollHeight > div.clientHeight;
+    alert("ini " + hs + " cliend width" + div.scrollHeight + " scroll width" + div.clientHeight)
+    // alert("width " + hs + "  cliend width" + div2.clientWidth + " scroll width" + div2.scrollWidth)
+    alert("height " + hs + "  cliend width" + div2.scrollHeight + " scroll width" + div2.clientHeight)
+    alert(vs)
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
 
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
 <!-- Bootstrap tether Core JavaScript -->
 <script src="<?= base_url('assets/node_modules/popper/popper.min.js') ?>"></script>
 <script src="<?= base_url('assets/node_modules/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
