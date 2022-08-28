@@ -60,7 +60,7 @@
 										<select name="tahun_data" class="custom-select col-12" id="inlineFormCustomSelect" required>
 											<option selected>Pilih Tahun</option>
 											<?php
-											for ($i = date('Y'); $i >= date('Y') - 5; $i--) {
+											for ($i = date('Y')+5; $i >= date('Y') - 10; $i--) {
 												echo "<option value='$i'";
 												if (date('Y') == $i) {
 													// echo "selected";
@@ -89,9 +89,9 @@
 								<a href="<?= base_url('DataBenar/Format Benar.xls'); ?>">
 									<button type="button" class="btn btn-warning"><i class="fa fa-file-excel-o"></i> Download Format</button>
 								</a>
-								<a href="<?= base_url('C_ETL/deleteAll'); ?>">
+								<!-- <a href="<?= base_url('C_ETL/deleteAll'); ?>">
 									<button type="button" class="btn btn-danger">Hapus Data</button>
-								</a>
+								</a> -->
 							</div>
 						</div>
 					</form>
