@@ -60,7 +60,7 @@
 										<select name="tahun_data" class="custom-select col-12" id="inlineFormCustomSelect" required>
 											<option selected>Pilih Tahun</option>
 											<?php
-											for ($i = date('Y')+5; $i >= date('Y') - 10; $i--) {
+											for ($i = date('Y') + 1; $i >= date('Y') - 10; $i--) {
 												echo "<option value='$i'";
 												if (date('Y') == $i) {
 													// echo "selected";
@@ -137,8 +137,8 @@
 										<td class="align-middle"><?= $row->data_tahun ?></td>
 										<td class="align-middle">
 											<!-- <a href="<?= base_url($row->path_file) ?>" class="btn btn-warning btn-circle"> <i class="fa fa-download"></i></a> -->
-											<a href="<?= base_url('C_ETL/deletebyyear/'.$row->data_tahun)?>">
-											<button type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i> </button>
+											<a href="<?= base_url('C_ETL/deletebyyear/' . $row->data_tahun) ?>">
+												<button type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i> </button>
 											</a>
 										</td>
 									</tr>

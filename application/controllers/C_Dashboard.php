@@ -34,7 +34,7 @@ class C_Dashboard extends CI_Controller
     public function index()
     {
         // $data['CountSiswaByYear'] = $this->Visual->getCountSiswaByYear(date('Y') - 1);
-        $tahun = date('Y') - 1;
+        $tahun = date('Y');
 
         $data['CountSiswaNow'] = $this->Visual->getCountSiswaByYear($tahun);
         $data['CountAsalSekolahNow'] = $this->Visual_Sekolah->getCountAsalSekolahByYear($tahun);
