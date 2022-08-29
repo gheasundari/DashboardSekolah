@@ -60,12 +60,9 @@
 										<select name="tahun_data" class="custom-select col-12" id="inlineFormCustomSelect" required>
 											<option selected>Pilih Tahun</option>
 											<?php
-											for ($i = date('Y') + 1; $i >= date('Y') - 10; $i--) {
-												echo "<option value='$i'";
-												if (date('Y') == $i) {
-													// echo "selected";
-												}
-												echo ">$i</option>";
+											// var_dump($select_tahun);
+											foreach ($select_tahun as $value) {
+												echo "<option value='$value'>$value</option>";
 											}
 											?>
 										</select>

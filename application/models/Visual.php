@@ -4,6 +4,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Visual extends CI_Model
 {
+    public function selectLastYear()
+    {
+        $this->db->select('tahun');
+        $this->db->from('dim_tahun');
+        $this->db->order_by('tahun', 'desc');
+        $this->db->limit(1);
+        return $this->db->get()->row_array();
+    }
+
     public function getCountSiswaByYear($tahun)
     {
         $this->db->select('count(fs.nisn) as jumlah_siswa, dt.tahun');
@@ -27,8 +36,9 @@ class Visual extends CI_Model
         $this->db->from('fact_sekolah fs');
         $this->db->join('dim_tahun dt', 'dt.id_tahun = fs.data_tahun', 'left');
         $this->db->group_by('dt.tahun');
-        $this->db->having('tahun >',  date('Y') - 3);
+        $this->db->having('tahun <=', ($tahun));
         $this->db->order_by('dt.tahun', 'desc');
+        $this->db->limit(3);
         // return $this->db->get_compiled_select();
         return $this->db->get()->result();
     }
@@ -45,7 +55,7 @@ class Visual extends CI_Model
     {
         $data =  $this->db->query("SELECT count(fs.nisn) as jumlah_siswa, js.jenis_kelamin, `dt`.`tahun` FROM `fact_sekolah` `fs` 
         LEFT JOIN `dim_jeniskelamin` `js` ON `js`.`id_jeniskelamin` = `fs`.id_jeniskelamin
-        LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` GROUP by tahun,js.jenis_kelamin HAVING tahun >" . ($tahun - 3) . " order by tahun desc");
+        LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` GROUP by tahun,js.jenis_kelamin HAVING tahun <=" . ($tahun) . " order by tahun desc limit 6");
         return $data->result();
     }
 }

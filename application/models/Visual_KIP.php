@@ -36,7 +36,7 @@ class Visual_KIP extends CI_Model
 
     public function getCountKipByThreeYear($tahun)
     {
-        $data = $this->db->query("SELECT count(fs.nisn) as jumlah_penerimakip, kip.penerimakip, `dt`.`tahun` FROM `fact_sekolah` `fs` LEFT JOIN `dim_penerimakip` `kip` ON `kip`.`id_kip` = `fs`.id_penerimakip LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` GROUP by tahun,kip.penerimakip HAVING tahun > " . ($tahun - 3) . " order by tahun desc");
+        $data = $this->db->query("SELECT count(fs.nisn) as jumlah_penerimakip, kip.penerimakip, `dt`.`tahun` FROM `fact_sekolah` `fs` LEFT JOIN `dim_penerimakip` `kip` ON `kip`.`id_kip` = `fs`.id_penerimakip LEFT JOIN `dim_tahun` `dt` ON `dt`.`id_tahun` = `fs`.`data_tahun` GROUP by tahun,kip.penerimakip HAVING tahun <= " . ($tahun) . " order by tahun desc limit 6");
         return $data->result();
     }
 }

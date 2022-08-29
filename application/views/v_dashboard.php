@@ -34,7 +34,7 @@
 			<div class="col-lg-3 col-md-12">
 				<div class="card bg-purple text-white h-70">
 					<div class="card-body">
-						<p class="light_op_text mb-0"><?= date('Y') - 1 ?></p>
+						<p class="light_op_text mb-0"><?= $tahun ?></p>
 						<h5 class="card-title">Jumlah Siswa</h5>
 						<div class="row">
 							<div class="col-12">
@@ -50,7 +50,7 @@
 			<div class="col-lg-3 col-md-12">
 				<div class="card bg-dark text-white">
 					<div class="card-body">
-						<p class="light_op_text mb-0"><?= date('Y') - 1 ?></p>
+						<p class="light_op_text mb-0"><?= $tahun ?></p>
 						<h5 class="card-title">Sekolah Terbanyak</h5>
 						<div class="row">
 							<div class="col-12">
@@ -66,7 +66,7 @@
 			<div class="col-lg-3 col-md-12">
 				<div class="card bg-danger text-white" id="penerimakip">
 					<div class="card-body">
-						<p class="light_op_text mb-0"><?= date('Y') - 1 ?></p>
+						<p class="light_op_text mb-0"><?= $tahun ?></p>
 						<h5 class="card-title">Penerima KIP</h5>
 						<div class="row">
 							<div class="col-12">
@@ -81,7 +81,7 @@
 			<div class="col-lg-3 col-md-12">
 				<div class="card bg-info text-white">
 					<div class="card-body">
-						<p class="light_op_text mb-0"><?= date('Y') - 1 ?></p>
+						<p class="light_op_text mb-0"><?= $tahun ?></p>
 						<h5 class="card-title mb-0">Rombel</h5>
 						<div class="row">
 							<?php

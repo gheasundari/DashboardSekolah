@@ -36,22 +36,24 @@ class C_ETL extends CI_Controller
         $currentuser = $this->Auth_Model->current_user();
         $data['file'] = $this->Import->selectFile();
         $tahun = $this->Import->selecttahunfile();
-        // var_dump($tahun[0]->test = 1);
-        // var_dump($tahun[0]);
-        // die;
+        $tahun_dim = $this->Import->dim_tahun();
+        $temp_tahun = array();
+        $select_tahun = array();
+        foreach ($tahun_dim as $row) {
+            array_push($temp_tahun, $row['tahun']);
+        }
+        for ($i = date('Y') + 1; $i >= date('Y') - 5; $i--) {
+            if (!in_array($i, $temp_tahun)) {
+                array_push($select_tahun, $i);
+            }
+        }
         foreach ($tahun as $row) {
             $berkas = $this->Import->selectfilebyyear($row->data_tahun);
-            // var_dump($berkas);
-            // foreach($berkas as $b){
             $row->berkas = $berkas;
-            // }
-            // echo $row->data_tahun;
         }
         $data['tahun'] = $tahun;
-        // var_dump($data['tahun']);
-        // die();
-        // var_dump($tahun);
-        // die;
+        $data['select_tahun'] = $select_tahun;
+
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar', $currentuser);
         $this->load->view('upload_file/upload_file', $data);
@@ -214,7 +216,7 @@ class C_ETL extends CI_Controller
     {
         $this->load->model('Import');
         $berkas = $this->Import->selectfilebyyear($tahun);
-        
+
         foreach ($berkas as $row) {
             unlink('./' . $row->path_file);
         }

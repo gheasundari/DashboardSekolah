@@ -4,16 +4,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Import extends CI_Model
 {
-  function selecttahunfile(){
+  function dim_tahun()
+  {
+    $query = $this->db->select('tahun')->distinct()->order_by('tahun')->get('dim_tahun');
+    return $query->result_array();
+  }
+
+  function selecttahunfile()
+  {
     $query = $this->db->select(
-      'data_tahun')->distinct()->order_by('data_tahun')->get('data_excel');
+      'data_tahun'
+    )->distinct()->order_by('data_tahun')->get('data_excel');
     return $query->result();
   }
-  function selectFile(){
+
+  function selectFile()
+  {
     $query = $this->db->order_by('data_tahun', 'desc')->get('data_excel');
     return $query->result();
   }
-  function selectfilebyyear($tahun){
+
+  function selectfilebyyear($tahun)
+  {
     $query = $this->db->order_by('data_tahun', 'desc')->where('data_tahun', $tahun)->get('data_excel');
     return $query->result();
   }
@@ -168,7 +180,8 @@ class Import extends CI_Model
     $this->db->query($query);
   }
 
-  public function deleteByYear($tahun){
+  public function deleteByYear($tahun)
+  {
     // ->get_compiled_select();
     $this->db->delete('xls_sekolah', array('data_tahun' => $tahun));
     $this->db->delete('xl_sekolah', array('data_tahun' => $tahun));
@@ -179,11 +192,12 @@ class Import extends CI_Model
     // die();
     // return $tahun;
   }
-  
-  public function deleteberkas($tahun){
+
+  public function deleteberkas($tahun)
+  {
     $this->db->delete('data_excel', array('data_tahun' => $tahun));
   }
-  
+
   public function deleteAll()
   {
     $this->db->empty_table('dim_agama');

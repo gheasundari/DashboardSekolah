@@ -19,6 +19,7 @@ class C_Dashboard extends CI_Controller
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/userguide3/general/urls.html
      */
+    var $tahun;
     public function __construct()
     {
         parent::__construct();
@@ -30,16 +31,20 @@ class C_Dashboard extends CI_Controller
         if (!$this->Auth_Model->current_user()) {
             redirect('Auth/login');
         }
+
     }
     public function index()
     {
-        // $data['CountSiswaByYear'] = $this->Visual->getCountSiswaByYear(date('Y') - 1);
-        $tahun = date('Y');
+        // $data['CountSiswaByYear'] = $this->Visual->getCountSiswaByYear($tahun - 1);
+        $tahun = $this->Visual->selectLastYear()['tahun'];
+        // var_dump($tahun);
+        // die();
 
         $data['CountSiswaNow'] = $this->Visual->getCountSiswaByYear($tahun);
         $data['CountAsalSekolahNow'] = $this->Visual_Sekolah->getCountAsalSekolahByYear($tahun);
         $data['CountPenerimaKipNow'] = $this->Visual_KIP->getCountPenerimaKipByYear($tahun);
         $data['CountRombelNow'] = $this->Visual_Rombel->getCountRombelByYear($tahun);
+        $data['tahun'] = $tahun;
         $currentuser = $this->Auth_Model->current_user();
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar', $currentuser);
@@ -49,13 +54,14 @@ class C_Dashboard extends CI_Controller
 
     public function chartCountSiswaByThreeYear()
     {
-        $data = $this->Visual->getCountSiswaByThreeYear(date('Y'));
-        // echo   $data;
+        $tahun = $this->Visual->selectLastYear()['tahun'];
+        $data = $this->Visual->getCountSiswaByThreeYear($tahun);
         echo json_encode($data);
     }
     public function chartCountKipByThreeYear()
     {
-        $data = $this->Visual_KIP->getCountKipByThreeYear(date('Y'));
+        $tahun = $this->Visual->selectLastYear()['tahun'];
+        $data = $this->Visual_KIP->getCountKipByThreeYear($tahun);
         echo json_encode($data);
     }
     // public function chartCountSiswaByYear($tahun)
@@ -66,13 +72,15 @@ class C_Dashboard extends CI_Controller
 
     public function chartCountGenderByYear()
     {
-        $data = $this->Visual->getCountGenderByYear(date('Y'));
+        $tahun = $this->Visual->selectLastYear()['tahun'];
+        $data = $this->Visual->getCountGenderByYear($tahun);
         echo json_encode($data);
     }
 
     public function chartCountRombelByYear()
     {
-        $data = $this->Visual_Rombel->getCountRombelThreeYear(date('Y'));
+        $tahun = $this->Visual->selectLastYear()['tahun'];
+        $data = $this->Visual_Rombel->getCountRombelThreeYear($tahun);
         echo json_encode($data);
     }
 }

@@ -310,6 +310,7 @@
 			}
 		})
 	}
+	
 	myChart('bar', 'siswa')
 	myChartGender('bar', 'gender')
 	myChartKip('bar', 'kip')

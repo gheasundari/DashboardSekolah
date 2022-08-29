@@ -21,15 +21,15 @@
 
 <script>
     //Get the button
-    var mybutton = document.getElementById("myBtn");
-    var div = document.getElementById('content');
-    var div2 = document.getElementById('penerimakip');
-    var hs = div.scrollWidth > div.clientWidth;
-    var vs = div.scrollHeight > div.clientHeight;
-    alert("ini " + hs + " cliend width" + div.scrollHeight + " scroll width" + div.clientHeight)
-    // alert("width " + hs + "  cliend width" + div2.clientWidth + " scroll width" + div2.scrollWidth)
-    alert("height " + hs + "  cliend width" + div2.scrollHeight + " scroll width" + div2.clientHeight)
-    alert(vs)
+    // var mybutton = document.getElementById("myBtn");
+    // var div = document.getElementById('content');
+    // var div2 = document.getElementById('penerimakip');
+    // var hs = div.scrollWidth > div.clientWidth;
+    // var vs = div.scrollHeight > div.clientHeight;
+    // alert("ini " + hs + " cliend width" + div.scrollHeight + " scroll width" + div.clientHeight)
+    // // alert("width " + hs + "  cliend width" + div2.clientWidth + " scroll width" + div2.scrollWidth)
+    // alert("height " + hs + "  cliend width" + div2.scrollHeight + " scroll width" + div2.clientHeight)
+    // alert(vs)
     // When the user scrolls down 20px from the top of the document, show the button
     window.onscroll = function() {
         scrollFunction()
