@@ -15,7 +15,6 @@
 				data.map(data => {
 					chartX.push(data.tahun)
 					chartY.push(data.jumlah_siswa)
-
 				})
 				const backgroundColor = ['salmon', 'rgba(153, 102, 255)', 'rgba(255, 159, 64)'];
 				const chartData = {
@@ -310,7 +309,7 @@
 			}
 		})
 	}
-	
+
 	myChart('bar', 'siswa')
 	myChartGender('bar', 'gender')
 	myChartKip('bar', 'kip')
