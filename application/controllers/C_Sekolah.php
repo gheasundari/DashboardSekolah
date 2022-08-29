@@ -35,8 +35,6 @@ class C_Sekolah extends CI_Controller
     {
         $data['tahun'] = $this->Tahun->select();
         $data['tahunterakhir'] = $this->Tahun->selectlast();
-        // var_dump($data['tahunterakhir']->tahun);
-        // die();
         $currentuser = $this->Auth_Model->current_user();
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar', $currentuser);

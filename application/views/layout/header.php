@@ -24,6 +24,10 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         #myBtn {
             display: none;
             position: fixed;
@@ -109,4 +113,3 @@
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
-        

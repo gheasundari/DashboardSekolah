@@ -24,6 +24,7 @@ class C_JenisTinggal extends CI_Controller
         parent::__construct();
         $this->load->model('Visual_JenisTinggal');
         $this->load->model('Tahun');
+        $this->load->model('Visual');
         $this->load->model('Auth_Model');
         if (!$this->Auth_Model->current_user()) {
             redirect('Auth/login');
@@ -34,12 +35,18 @@ class C_JenisTinggal extends CI_Controller
     {
         $data['tahun'] = $this->Tahun->select();
         $currentuser = $this->Auth_Model->current_user();
+        $data['tahunterakhir'] = $this->Tahun->selectlast();
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar', $currentuser);
         $this->load->view('JenisTinggal/v_JenisTinggal', $data);
         $this->load->view('layout/footer');
     }
 
+    public function countSiswa($tahun)
+    {
+        $data = $this->Visual->getCountSiswaByYear($tahun);
+        echo json_encode($data);
+    }
     public function chartJenisTinggalByYear($tahun)
     {
         $data = $this->Visual_JenisTinggal->getJenisTinggalByYear($tahun);

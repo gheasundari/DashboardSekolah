@@ -164,8 +164,23 @@
 	function updateChart(option) {
 		var tahunpilihan = option.value;
 		const text_tahun = $(".text-tahun");
+		const jumlahsiswa = $("#jumlahsiswa");
 		text_tahun.text(tahunpilihan);
-		
+		$.ajax({
+			url: baseUrl + 'C_JenisTinggal/countSiswa/' + tahunpilihan,
+			dataType: 'json',
+			method: 'get',
+			success: data => {
+				console.log("data tahun", data);
+				jumlahsiswa.text(data.jumlah_siswa)
+
+			},
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(xhr.status);
+				alert(thrownError);
+			}
+
+		})
 		chartBar.destroy();
 		chartPersen.destroy();
 

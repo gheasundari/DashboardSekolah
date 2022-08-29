@@ -24,6 +24,7 @@ class C_Transportasi extends CI_Controller
         parent::__construct();
         $this->load->model('Visual_Transportasi');
         $this->load->model('Tahun');
+        $this->load->model('Visual');
         $this->load->model('Auth_Model');
         if (!$this->Auth_Model->current_user()) {
             redirect('Auth/login');
@@ -33,6 +34,7 @@ class C_Transportasi extends CI_Controller
     public function index()
     {
         $data['tahun'] = $this->Tahun->select();
+        $data['tahunterakhir'] = $this->Tahun->selectlast();
         $currentuser = $this->Auth_Model->current_user();
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar', $currentuser);
@@ -40,6 +42,11 @@ class C_Transportasi extends CI_Controller
         $this->load->view('layout/footer');
     }
 
+    public function countSiswa($tahun)
+    {
+        $data = $this->Visual->getCountSiswaByYear($tahun);
+        echo json_encode($data);
+    }
     public function chartTransportasiByYear($tahun)
     {
         $data = $this->Visual_Transportasi->getTransportasiByYear($tahun);
