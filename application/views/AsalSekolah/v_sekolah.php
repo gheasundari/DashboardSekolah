@@ -36,13 +36,22 @@
 					</div>
 					<div class="form-group row">
 						<label for="example-search-input" class="col-2 col-form-label">Data Tahun</label>
-						<div class="col-10">
-							<select class="select2 form-control custom-select" style="width: 50%; height:36px;" name='tahun' onchange="updateChart(this)">
+						<div class="col-6">
+							<select class="select2 form-control custom-select" style="width: 80%; height:36px;" name='tahun' onchange="updateChart(this)">
 								<option>Pilih Tahun</option>
 								<?php foreach ($tahun as $row) { ?>
 									<option><?= $row->tahun ?></option>
 								<?php } ?>
 							</select>
+						</div>
+						<div class="col-3">
+							<div class="card bg-info text-white">
+								<div class="card-body py-2">
+									<span class="font-weight-bold">Jumlah Siswa :</span>
+									<span class="light_op_text mb-0" id="jumlahsiswa">-</span>
+								</div>
+							</div>
+							<!-- Jumlah Siswa : <span id="jumlahsiswa">-</span> -->
 						</div>
 					</div>
 					<div class="row">
@@ -139,7 +148,23 @@
 <script>
 	jQuery(document).ready(function() {
 		$(".select2").select2();
-		const tahun = <?= date('Y') ?>;
+		const jumlahsiswa = $("#jumlahsiswa");
+		const tahun = <?= $tahunterakhir->tahun ?>;
+		$.ajax({
+			url: baseUrl + 'C_Sekolah/countSiswa/<?= $tahunterakhir->tahun ?>',
+			dataType: 'json',
+			method: 'get',
+			success: data => {
+				console.log("data tahun", data);
+				jumlahsiswa.text(data.jumlah_siswa)
+
+			},
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(xhr.status);
+				alert(thrownError);
+			}
+
+		})
 		myChart('line', 'siswa', tahun);
 		ChartTop('bar', 'topSekolah', tahun);
 	});

@@ -32,7 +32,6 @@ class C_Rombel extends CI_Controller
 
     public function index()
     {
-        // $data['CountSiswaByYear'] = $this->Visual->getCountSiswaByYear(date('Y') - 1);
         $data['tahun'] = $this->Tahun->select();
         $currentuser = $this->Auth_Model->current_user();
         $this->load->view('layout/header');

@@ -23,6 +23,7 @@ class C_Sekolah extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Visual_Sekolah');
+        $this->load->model('Visual');
         $this->load->model('Tahun');
         $this->load->model('Auth_Model');
         if (!$this->Auth_Model->current_user()) {
@@ -33,11 +34,20 @@ class C_Sekolah extends CI_Controller
     public function index()
     {
         $data['tahun'] = $this->Tahun->select();
+        $data['tahunterakhir'] = $this->Tahun->selectlast();
+        // var_dump($data['tahunterakhir']->tahun);
+        // die();
         $currentuser = $this->Auth_Model->current_user();
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar', $currentuser);
         $this->load->view('AsalSekolah/v_sekolah', $data);
         $this->load->view('layout/footer');
+    }
+
+    public function countSiswa($tahun)
+    {
+        $data = $this->Visual->getCountSiswaByYear($tahun);
+        echo json_encode($data);
     }
 
     public function chartSekolahByYear($tahun)

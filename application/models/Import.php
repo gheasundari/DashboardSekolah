@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Import extends CI_Model
 {
+  
   function dim_tahun()
   {
     $query = $this->db->select('tahun')->distinct()->order_by('tahun')->get('dim_tahun');

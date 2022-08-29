@@ -35,7 +35,6 @@ class C_Dashboard extends CI_Controller
     }
     public function index()
     {
-        // $data['CountSiswaByYear'] = $this->Visual->getCountSiswaByYear($tahun - 1);
         $tahun = $this->Visual->selectLastYear()['tahun'];
         // var_dump($tahun);
         // die();

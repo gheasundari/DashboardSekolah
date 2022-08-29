@@ -8,7 +8,6 @@
 			method: 'get',
 			success: data => {
 				console.log(data);
-
 				if (chart instanceof Chart) {
 					chart.destroy();
 				}
@@ -17,7 +16,6 @@
 				data.map(data => {
 					chartX.push(data.nama_sekolah)
 					chartY.push(data.jumlah)
-
 				})
 				const backgroundColor = ['salmon', 'rgba(153, 102, 255)', 'rgba(255, 159, 64)'];
 				const chartData = {
@@ -182,7 +180,23 @@
 		var tahunpilihan = option.value;
 		// myChart.tahun = option.value
 		const text_tahun = $(".text-tahun");
+		const jumlahsiswa = $("#jumlahsiswa");
 		text_tahun.text(tahunpilihan);
+		$.ajax({
+			url: baseUrl + 'C_Sekolah/countSiswa/' + tahunpilihan,
+			dataType: 'json',
+			method: 'get',
+			success: data => {
+				console.log("data tahun", data);
+				jumlahsiswa.text(data.jumlah_siswa)
+
+			},
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(xhr.status);
+				alert(thrownError);
+			}
+
+		})
 
 		chart.destroy();
 		chartTop.destroy();

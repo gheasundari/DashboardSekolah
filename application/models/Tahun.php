@@ -12,6 +12,15 @@ class Tahun extends CI_Model
     $query = $this->db->get('dim_tahun');
     return $query->result();
   }
+  public function selectlast()
+  {
+    //Mengambil semua isi tabel dim_tahun
+    $this->db->select('id_tahun, tahun');
+    $this->db->order_by('tahun', 'DESC');
+    $this->db->limit(1);
+    $query = $this->db->get('dim_tahun');
+    return $query->row();
+  }
 
   public function selectThreeYear()
   {
