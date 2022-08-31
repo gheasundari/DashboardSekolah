@@ -134,9 +134,9 @@
 										<td class="align-middle"><?= $row->data_tahun ?></td>
 										<td class="align-middle">
 											<!-- <a href="<?= base_url($row->path_file) ?>" class="btn btn-warning btn-circle"> <i class="fa fa-download"></i></a> -->
-											<a href="<?= base_url('C_ETL/deletebyyear/' . $row->data_tahun) ?>">
-												<button type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i> </button>
-											</a>
+											<!-- <a href="<?= base_url('C_ETL/deletebyyear/' . $row->data_tahun) ?>" class=""> -->
+											<button type="button" class="btn btn-danger btn-circle" onclick="delete_data('<?= base_url('C_ETL/deletebyyear/' . $row->data_tahun) ?>')"><i class="fa fa-trash"></i> </button>
+											<!-- </a> -->
 										</td>
 									</tr>
 								<?php } ?>
@@ -229,6 +229,14 @@
 	<!-- End Right sidebar -->
 	<!-- ============================================================== -->
 </div>
+<script type="text/javascript">
+	function delete_data(url) {
+		// alert(url)
+		if (confirm('Yakin menghapus data ini ?')) {
+			window.location = url;
+		}
+	}
+</script>
 <!-- ============================================================== -->
 <!-- End Container fluid  -->
 <!-- ============================================================== -->

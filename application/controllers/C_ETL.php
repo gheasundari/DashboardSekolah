@@ -223,14 +223,14 @@ class C_ETL extends CI_Controller
         $test = $this->Import->deleteByYear($tahun);
 
         // var_dump($testaja);
-        $this->session->set_flashdata('success', 'Data berhasil dihapus semua.');
+        $this->session->set_flashdata('success', 'Data berhasil dihapus.');
         redirect('c_etl', 'refresh');
     }
     function deleteAll()
     {
         $this->load->model('Import');
         $this->Import->deleteAll();
-        $this->session->set_flashdata('success', 'Data berhasil dihapus semua.');
+        $this->session->set_flashdata('success', 'Data berhasil dihapus.');
         redirect('c_etl', 'refresh');
     }
 }
