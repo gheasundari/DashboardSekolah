@@ -48,7 +48,8 @@
 
 <body class="skin-default-dark fixed-layout">
     <!-- <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> -->
-    <button onclick="topFunction()" id="myBtn" class="btn btn-info btn-circle"><i class="fa fa-arrow-up"></i> </button>
+    <!-- <button onclick="topFunction()" id="myBtn" class="btn btn-info btn-circle"><i class="fa fa-arrow-down"></i> </button> -->
+
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->

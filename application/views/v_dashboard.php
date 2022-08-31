@@ -1,6 +1,7 @@
 <!-- ============================================================== -->
 <!-- Container fluid  -->
 <!-- ============================================================== -->
+<a href="#down" id="myBtn" class="btn btn-info btn-circle"><i class="fa fa-arrow-down"></i></a>
 <div class="container-fluid">
 
 	<!-- ============================================================== -->
@@ -36,7 +37,7 @@
 					<div class="card-body">
 						<p class="light_op_text mb-0"><?= $tahun ?></p>
 						<h5 class="card-title">Jumlah Siswa</h5>
-						<a href="#down">Click Here to Smoothly Scroll Down</a>
+
 						<div class="row">
 							<div class="col-12">
 								<h1 class="text-white"><?= isset($CountSiswaNow->jumlah_siswa) ? $CountSiswaNow->jumlah_siswa : '0' ?> Orang</h1>

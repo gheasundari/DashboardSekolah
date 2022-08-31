@@ -42,7 +42,7 @@ class C_ETL extends CI_Controller
         foreach ($tahun_dim as $row) {
             array_push($temp_tahun, $row['tahun']);
         }
-        for ($i = date('Y') + 1; $i >= date('Y') - 5; $i--) {
+        for ($i = date('Y') + 10; $i >= date('Y') - 10; $i--) {
             if (!in_array($i, $temp_tahun)) {
                 array_push($select_tahun, $i);
             }
